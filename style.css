@@ -289,7 +289,7 @@ ul { list-style: none; }
   letter-spacing: 2px;
 }
 .stat-number.online {
-  color: #4cff91;
+  color: #ff4c4c;
   text-shadow: 0 0 20px rgba(76, 255, 145, 0.4);
   font-size: 1.8rem;
 }
