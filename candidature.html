@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candidature — Border Italian RP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;600&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <style>
+    :root { --verde: #009246; --bianco: #f4f0e8; --rosso: #ce2b37; --nero: #0a0a0a; --grigio-scuro: #111318; --grigio-medio: #1e2028; --grigio-card: #181b22; --testo: #d4cfc5; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--nero); color: var(--testo); font-family: 'Oswald', sans-serif; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; padding: 0 3rem; height: 64px; background: rgba(10,10,10,0.98); border-bottom: 2px solid var(--verde); position: fixed; top: 0; left: 0; right: 0; z-index: 100; }
+    .topbar-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 4px; color: var(--bianco); }
+    .topbar-logo span { color: var(--verde); }
+    .topbar-tricolore { display: flex; gap: 3px; }
+    .stripe { width: 4px; height: 32px; border-radius: 2px; }
+    .stripe-v { background: var(--verde); } .stripe-b { background: var(--bianco); } .stripe-r { background: var(--rosso); }
+    nav.topnav { display: flex; gap: 2rem; }
+    nav.topnav a { color: var(--testo); text-decoration: none; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; padding-bottom: 2px; border-bottom: 2px solid transparent; transition: color .2s, border-color .2s; }
+    nav.topnav a:hover, nav.topnav a.active { color: var(--verde); border-bottom-color: var(--verde); }
+
+    .page-header { padding: 120px 3rem 4rem; background: linear-gradient(180deg, #0d1014 0%, var(--nero) 100%); text-align: center; position: relative; overflow: hidden; }
+    .page-header::before { content: 'JOIN'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-family: 'Bebas Neue', sans-serif; font-size: 25vw; color: rgba(255,255,255,0.015); pointer-events: none; white-space: nowrap; }
+    .page-label { font-size: 0.7rem; letter-spacing: 5px; text-transform: uppercase; color: var(--verde); margin-bottom: 1rem; }
+    .page-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem,8vw,6rem); letter-spacing: 6px; color: var(--bianco); margin-bottom: 1rem; }
+    .page-sub { font-family: 'Source Serif 4', serif; font-weight: 300; font-style: italic; color: rgba(212,207,197,0.5); font-size: 1.1rem; }
+
+    .steps-section { max-width: 900px; margin: 0 auto; padding: 4rem 3rem 2rem; }
+    .steps-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 3px; color: var(--verde); margin-bottom: 2rem; }
+    .steps { display: flex; flex-direction: column; gap: 1px; }
+    .step { display: flex; gap: 2rem; align-items: flex-start; padding: 2rem; background: var(--grigio-card); border-left: 3px solid var(--verde); }
+    .step-num { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: rgba(0,146,70,0.25); line-height: 1; min-width: 50px; }
+    .step-content {}
+    .step-title { font-size: 1rem; font-weight: 600; letter-spacing: 1px; color: var(--bianco); margin-bottom: 6px; }
+    .step-desc { font-size: 0.85rem; color: rgba(212,207,197,0.55); line-height: 1.7; }
+
+    .form-section { max-width: 900px; margin: 0 auto; padding: 2rem 3rem 5rem; }
+    .form-title { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 4px; color: var(--bianco); margin-bottom: 2rem; }
+
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group.full { grid-column: 1 / -1; }
+    label { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--verde); }
+    input, select, textarea {
+      background: var(--grigio-card); border: 1px solid rgba(255,255,255,0.08); color: var(--testo);
+      font-family: 'Oswald', sans-serif; font-size: 0.9rem; letter-spacing: 1px; padding: 12px 16px;
+      outline: none; transition: border-color .2s; width: 100%;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--verde); }
+    select option { background: var(--grigio-scuro); }
+    textarea { resize: vertical; min-height: 120px; }
+    .submit-btn {
+      margin-top: 2rem; background: var(--verde); color: #fff; border: none; cursor: pointer;
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 4px; padding: 16px 48px;
+      transition: all .25s; display: inline-block;
+    }
+    .submit-btn:hover { background: #00b356; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,146,70,0.3); }
+
+    .notice-box { background: rgba(0,146,70,0.06); border: 1px solid rgba(0,146,70,0.2); padding: 1.5rem 2rem; margin-bottom: 2rem; font-size: 0.85rem; color: rgba(212,207,197,0.6); line-height: 1.7; }
+    .notice-box strong { color: var(--verde); }
+
+    footer { background: #060608; border-top: 1px solid rgba(0,146,70,0.15); padding: 3rem; text-align: center; }
+    .footer-tricolore { display: flex; justify-content: center; margin-bottom: 1.5rem; }
+    .footer-tricolore div { width: 48px; height: 4px; }
+    .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 5px; color: rgba(244,240,232,0.4); margin-bottom: 1rem; }
+    .footer-copy { font-size: 0.75rem; letter-spacing: 2px; color: rgba(212,207,197,0.2); text-transform: uppercase; }
+  </style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-logo">Border <span>Italian</span> RP</div>
+  <nav class="topnav">
+    <a href="index.html">Home</a><a href="fazioni.html">Fazioni</a><a href="regole.html">Regole</a><a href="mappa.html">Mappa</a><a href="candidature.html" class="active">Candidature</a><a href="contatti.html">Contatti</a>
+  </nav>
+  <div class="topbar-tricolore"><div class="stripe stripe-v"></div><div class="stripe stripe-b"></div><div class="stripe stripe-r"></div></div>
+</div>
+
+<div class="page-header">
+  <div class="page-label">Entra nel server</div>
+  <h1 class="page-title">Candidature</h1>
+  <p class="page-sub">La tua storia comincia con una scelta. Scegli la tua fazione.</p>
+</div>
+
+<div class="steps-section">
+  <div class="steps-title">Come Funziona</div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-content">
+        <div class="step-title">Leggi il Regolamento</div>
+        <div class="step-desc">Prima di candidarti, assicurati di aver letto e compreso interamente il <a href="regole.html" style="color:var(--verde)">regolamento del server</a>. La conoscenza delle regole sarà verificata durante il colloquio.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-content">
+        <div class="step-title">Compila il Modulo</div>
+        <div class="step-desc">Inserisci tutti i dati richiesti nel modulo qui sotto. Più dettagliata è la tua backstory, maggiori sono le probabilità di essere accettato. La qualità del RP si vede già dalla candidatura.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-content">
+        <div class="step-title">Attendi la Risposta</div>
+        <div class="step-desc">Lo staff risponderà via Discord entro 48 ore. In caso di candidatura approvata, verrai contattato per un breve colloquio vocale su Discord prima dell'accesso definitivo al server.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-content">
+        <div class="step-title">Periodo di Prova</div>
+        <div class="step-desc">Tutti i nuovi giocatori iniziano con un periodo di prova di 7 giorni. Durante questo periodo sarai monitorato dallo staff e dal responsabile della tua fazione. Al termine, verrà confermata la tua posizione.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="form-section">
+  <h2 class="form-title">Modulo di Candidatura</h2>
+  <div class="notice-box">
+    <strong>Nota:</strong> Questo modulo è a scopo illustrativo. Sul server reale, la candidatura avviene tramite il bot Discord ufficiale nel canale <strong>#candidature</strong>. Unisciti al nostro Discord per procedere con la candidatura ufficiale.
+  </div>
+  <div class="form-grid">
+    <div class="form-group">
+      <label>Nome Discord</label>
+      <input type="text" placeholder="es. Mario#1234">
+    </div>
+    <div class="form-group">
+      <label>Discord ID</label>
+      <input type="text" placeholder="es. 123456789012345678">
+    </div>
+    <div class="form-group">
+      <label>Nome del Personaggio</label>
+      <input type="text" placeholder="es. Marco Rossi">
+    </div>
+    <div class="form-group">
+      <label>Età del Personaggio</label>
+      <input type="number" placeholder="es. 28" min="18" max="70">
+    </div>
+    <div class="form-group full">
+      <label>Fazione Richiesta</label>
+      <select>
+        <option value="">— Seleziona una fazione —</option>
+        <option>Polizia di Stato</option>
+        <option>Arma dei Carabinieri</option>
+        <option>Guardia di Finanza</option>
+        <option>Polizia Locale</option>
+        <option>Esercito Militare</option>
+        <option>Vigili del Fuoco</option>
+        <option>Croce Rossa Italiana</option>
+        <option>Mafia</option>
+        <option>Cittadini</option>
+      </select>
+    </div>
+    <div class="form-group full">
+      <label>Backstory del Personaggio</label>
+      <textarea placeholder="Racconta la storia del tuo personaggio: origini, motivazioni, esperienze passate. Più è dettagliata, meglio è. Minimo 150 parole."></textarea>
+    </div>
+    <div class="form-group full">
+      <label>Esperienza RP precedente</label>
+      <textarea placeholder="Hai già giocato su altri server RP? Quali? Che ruoli hai ricoperto? Se è la prima volta, descrivici perché vuoi iniziare." style="min-height:80px;"></textarea>
+    </div>
+    <div class="form-group full">
+      <label>Perché questa fazione?</label>
+      <textarea placeholder="Motivaci la tua scelta. Cosa ti ha spinto verso questa specifica fazione e non un'altra?" style="min-height:80px;"></textarea>
+    </div>
+    <div class="form-group">
+      <label>Disponibilità settimanale</label>
+      <select>
+        <option>Meno di 5 ore</option>
+        <option>5–10 ore</option>
+        <option>10–20 ore</option>
+        <option>Più di 20 ore</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Hai letto il regolamento?</label>
+      <select>
+        <option>Sì, l'ho letto interamente</option>
+        <option>Sì, parzialmente</option>
+        <option>No, non ancora</option>
+      </select>
+    </div>
+  </div>
+  <button class="submit-btn" onclick="alert('Candidatura simulata! Nella versione reale, usa il bot Discord nel canale #candidature.')">Invia Candidatura</button>
+</div>
+
+<footer>
+  <div class="footer-tricolore"><div style="background:#009246"></div><div style="background:#f4f0e8"></div><div style="background:#ce2b37"></div></div>
+  <div class="footer-logo">Border Italian RP</div>
+  <div class="footer-copy">© 2025 Border Italian RP · Tutti i diritti riservati</div>
+</footer>
+</body>
+</html>

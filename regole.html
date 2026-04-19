@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regolamento — Border Italian RP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;600&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <style>
+    :root { --verde: #009246; --bianco: #f4f0e8; --rosso: #ce2b37; --nero: #0a0a0a; --grigio-scuro: #111318; --grigio-medio: #1e2028; --grigio-card: #181b22; --testo: #d4cfc5; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--nero); color: var(--testo); font-family: 'Oswald', sans-serif; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; padding: 0 3rem; height: 64px; background: rgba(10,10,10,0.98); border-bottom: 2px solid var(--verde); position: fixed; top: 0; left: 0; right: 0; z-index: 100; }
+    .topbar-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 4px; color: var(--bianco); }
+    .topbar-logo span { color: var(--verde); }
+    .topbar-tricolore { display: flex; gap: 3px; }
+    .stripe { width: 4px; height: 32px; border-radius: 2px; }
+    .stripe-v { background: var(--verde); } .stripe-b { background: var(--bianco); } .stripe-r { background: var(--rosso); }
+    nav.topnav { display: flex; gap: 2rem; }
+    nav.topnav a { color: var(--testo); text-decoration: none; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; padding-bottom: 2px; border-bottom: 2px solid transparent; transition: color .2s, border-color .2s; }
+    nav.topnav a:hover, nav.topnav a.active { color: var(--verde); border-bottom-color: var(--verde); }
+
+    .page-header { padding: 120px 3rem 4rem; background: linear-gradient(180deg, #0d1014 0%, var(--nero) 100%); text-align: center; position: relative; overflow: hidden; }
+    .page-header::before { content: 'REGOLE'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-family: 'Bebas Neue', sans-serif; font-size: 18vw; color: rgba(255,255,255,0.02); letter-spacing: 10px; white-space: nowrap; pointer-events: none; }
+    .page-label { font-size: 0.7rem; letter-spacing: 5px; text-transform: uppercase; color: var(--verde); margin-bottom: 1rem; }
+    .page-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem,8vw,6rem); letter-spacing: 6px; color: var(--bianco); margin-bottom: 1rem; }
+    .page-sub { font-family: 'Source Serif 4', serif; font-weight: 300; font-style: italic; color: rgba(212,207,197,0.5); font-size: 1.1rem; }
+
+    .rules-wrapper { max-width: 1000px; margin: 0 auto; padding: 4rem 3rem; }
+
+    .rules-chapter { margin-bottom: 4rem; }
+    .chapter-header { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(0,146,70,0.2); }
+    .chapter-num { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: rgba(0,146,70,0.25); line-height: 1; min-width: 60px; }
+    .chapter-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 3px; color: var(--bianco); }
+
+    .rule-block { background: var(--grigio-card); border-left: 3px solid var(--rule-color, #333); padding: 1.5rem 2rem; margin-bottom: 1px; display: grid; grid-template-columns: 60px 1fr; gap: 1.5rem; align-items: start; }
+    .rule-id { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; color: var(--rule-color, #666); opacity: 0.7; }
+    .rule-content {}
+    .rule-title { font-size: 1rem; font-weight: 600; letter-spacing: 1px; color: var(--bianco); margin-bottom: 6px; }
+    .rule-body { font-family: 'Source Serif 4', serif; font-weight: 300; font-size: 0.92rem; line-height: 1.8; color: rgba(212,207,197,0.65); }
+    .rule-sanction { display: inline-block; margin-top: 8px; font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; padding: 3px 10px; background: rgba(206,43,55,0.1); border: 1px solid rgba(206,43,55,0.3); color: var(--rosso); }
+
+    .warning-box { background: rgba(206,43,55,0.06); border: 1px solid rgba(206,43,55,0.2); padding: 2rem; margin: 3rem 0; }
+    .warning-box h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 3px; color: var(--rosso); margin-bottom: 0.8rem; }
+    .warning-box p { font-family: 'Source Serif 4', serif; font-weight: 300; font-size: 0.9rem; line-height: 1.7; color: rgba(212,207,197,0.6); }
+
+    footer { background: #060608; border-top: 1px solid rgba(0,146,70,0.15); padding: 3rem; text-align: center; }
+    .footer-tricolore { display: flex; justify-content: center; margin-bottom: 1.5rem; }
+    .footer-tricolore div { width: 48px; height: 4px; }
+    .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 5px; color: rgba(244,240,232,0.4); margin-bottom: 1rem; }
+    .footer-copy { font-size: 0.75rem; letter-spacing: 2px; color: rgba(212,207,197,0.2); text-transform: uppercase; }
+  </style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-logo">Border <span>Italian</span> RP</div>
+  <nav class="topnav">
+    <a href="index.html">Home</a><a href="fazioni.html">Fazioni</a><a href="regole.html" class="active">Regole</a><a href="mappa.html">Mappa</a><a href="candidature.html">Candidature</a><a href="contatti.html">Contatti</a>
+  </nav>
+  <div class="topbar-tricolore"><div class="stripe stripe-v"></div><div class="stripe stripe-b"></div><div class="stripe stripe-r"></div></div>
+</div>
+
+<div class="page-header">
+  <div class="page-label">Da rispettare sempre</div>
+  <h1 class="page-title">Regolamento</h1>
+  <p class="page-sub">La qualità del roleplay nasce dalla disciplina. Leggi, comprendi, rispetta.</p>
+</div>
+
+<div class="rules-wrapper">
+
+  <div class="warning-box">
+    <h3>⚠️ Attenzione</h3>
+    <p>La violazione delle regole può comportare sanzioni che vanno dal warn temporaneo al ban permanente. L'ignoranza del regolamento non è una scusante valida. Lo staff ha sempre l'ultima parola durante il gioco — eventuali contestazioni vanno aperte via ticket Discord.</p>
+  </div>
+
+  <div class="rules-chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">01</div>
+      <div class="chapter-title">Comportamento Generale</div>
+    </div>
+    <div class="rule-block" style="--rule-color:#009246;">
+      <div class="rule-id">1.1</div>
+      <div class="rule-content">
+        <div class="rule-title">Rispetto reciproco</div>
+        <div class="rule-body">Ogni giocatore deve mantenere un comportamento rispettoso verso tutti gli altri utenti, sia in gioco che sui canali Discord del server. Insulti, discriminazioni, comportamenti tossici o aggressivi non sono tollerati.</div>
+        <span class="rule-sanction">Sanzione: Warn → Mute → Ban</span>
+      </div>
+    </div>
+    <div class="rule-block" style="--rule-color:#009246;">
+      <div class="rule-id">1.2</div>
+      <div class="rule-content">
+        <div class="rule-title">Decisioni dello Staff</div>
+        <div class="rule-body">Le decisioni prese dallo staff durante il gioco sono vincolanti e non contestabili in gioco. Se ritieni di aver subito un torto, apri un ticket Discord con prove (screenshot/video). Non fare sceneggiate in gioco.</div>
+        <span class="rule-sanction">Sanzione: Warn → Kick → Ban temporaneo</span>
+      </div>
+    </div>
+    <div class="rule-block" style="--rule-color:#009246;">
+      <div class="rule-id">1.3</div>
+      <div class="rule-content">
+        <div class="rule-title">Bug ed Exploit</div>
+        <div class="rule-body">L'utilizzo di bug, glitch, exploit o qualsiasi vantaggio derivante da errori tecnici del server è severamente vietato. Segnala immediatamente qualunque bug allo staff tramite il canale apposito su Discord.</div>
+        <span class="rule-sanction">Sanzione: Ban permanente</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="rules-chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">02</div>
+      <div class="chapter-title">Regole di Roleplay</div>
+    </div>
+    <div class="rule-block" style="--rule-color:#c8a84b;">
+      <div class="rule-id">2.1</div>
+      <div class="rule-content">
+        <div class="rule-title">No Metagaming</div>
+        <div class="rule-body">Il metagaming consiste nell'usare informazioni ottenute al di fuori del roleplay (chat Discord, stream, ecc.) per avvantaggiare il proprio personaggio in gioco. È strettamente vietato. Il tuo personaggio sa solo ciò che ha vissuto in prima persona.</div>
+        <span class="rule-sanction">Sanzione: Warn → Ban temporaneo</span>
+      </div>
+    </div>
+    <div class="rule-block" style="--rule-color:#c8a84b;">
+      <div class="rule-id">2.2</div>
+      <div class="rule-content">
+        <div class="rule-title">No Powergaming</div>
+        <div class="rule-body">Il powergaming è il tentativo di rendere il proprio personaggio onnipotente, ignorare le conseguenze fisiche delle azioni o non lasciare agli altri la possibilità di reagire. Ogni azione deve essere realistica e contestualizzata.</div>
+        <span class="rule-sanction">Sanzione: Warn → Ban temporaneo</span>
+      </div>
+    </div>
+    <div class="rule-block" style="--rule-color:#c8a84b;">
+      <div class="rule-id">2.3</div>
+      <div class="rule-content">
+        <div class="rule-title">No RDM — Random Death Match</div>
+        <div class="rule-body">Uccidere un altro giocatore senza una motivazione roleplay valida e sviluppata è assolutamente vietato. Ogni azione violenta deve avere una storia dietro. Minacce, discussioni, escalation: prima di sparare, il RP deve esistere.</div>
+        <span class="rule-sanction">Sanzione: Ban temporaneo → Ban permanente</span>
+      </div>
+    </div>
+    <div class="rule-block" style="--rule-color:#c8a84b;">
+      <div class="rule-id">2.4</div>
+      <div class="rule-content">
+        <div class="rule-title">No VDM — Vehicle Death Match</div>
+        <div class="rule-body">Investire volontariamente altri giocatori con veicoli senza motivazione RP è vietato. I veicoli non sono armi — devono essere usati realisticamente. Eccezioni solo in scenari di fuga ad alto rischio con presupposto RP.</div>
+        <span class="rule-sanction">Sanzione: Ban temporaneo</span>
+      </div>
+    </div>
+    <div class="rule-block" style="--rule-color:#c8a84b;">
+      <div class="rule-id">2.5</div>
+      <div class="rule-content">
+        <div class="rule-title">Fear RP</div>
+        <div class="rule-body">Il tuo personaggio deve comportarsi in modo realistico di fronte a situazioni di pericolo. Se hai una pistola puntata alla testa, non puoi correre. Se sei in inferiorità numerica e armata, devi considerare la resa. La sopravvivenza ha priorità sul coraggio eroico.</div>
+        <span class="rule-sanction">Sanzione: Warn → Ban temporaneo</span>
+      </div>
+    </div>
+    <div class="rule-block" style="--rule-color:#c8a84b;">
+      <div class="rule-id">2.6</div>
+      <div class="rule-content">
+        <div class="rule-title">New Life Rule (NLR)</div>
+        <div class="rule-body">Dopo la morte del personaggio, questi non ricorda gli eventi che hanno portato alla sua morte. Non puoi tornare sul luogo della morte per vendicarti o riprendere oggetti persi. La NLR dura almeno 30 minuti dalla morte.</div>
+        <span class="rule-sanction">Sanzione: Warn → Ban temporaneo</span>
+      </div>
+    </div>
+    <div class="rule-block" style="--rule-color:#c8a84b;">
+      <div class="rule-id">2.7</div>
+      <div class="rule-content">
+        <div class="rule-title">Character Consistency</div>
+        <div class="rule-body">Il tuo personaggio deve avere una personalità e una storia coerenti. Non puoi passare da poliziotto a criminale senza un percorso narrativo approvato dallo staff. Ogni cambio di fazione richiede una motivazione RP valida.</div>
+        <span class="rule-sanction">Sanzione: Warn</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="rules-chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">03</div>
+      <div class="chapter-title">Regole per le Fazioni</div>
+    </div>
+    <div class="rule-block" style="--rule-color:#2563eb;">
+      <div class="rule-id">3.1</div>
+      <div class="rule-content">
+        <div class="rule-title">Rispetto della Gerarchia</div>
+        <div class="rule-body">All'interno di ogni fazione vige una gerarchia precisa. Gli ordini dei superiori devono essere seguiti salvo che non violino le regole del server. Ammutinamenti, disobbedienza cronica o insubordinazione possono comportare l'espulsione dalla fazione.</div>
+        <span class="rule-sanction">Sanzione: Espulsione dalla fazione → Warn</span>
+      </div>
+    </div>
+    <div class="rule-block" style="--rule-color:#2563eb;">
+      <div class="rule-id">3.2</div>
+      <div class="rule-content">
+        <div class="rule-title">Uso degli Equipaggiamenti</div>
+        <div class="rule-body">Armi, veicoli e attrezzature di servizio sono riservati ai membri della fazione di appartenenza e vanno usati coerentemente con il ruolo. Un vigile del fuoco non può usare le autoscale per scopi non emergenziali. Un poliziotto non può sparare senza causa.</div>
+        <span class="rule-sanction">Sanzione: Warn → Retrocessione di grado</span>
+      </div>
+    </div>
+    <div class="rule-block" style="--rule-color:#2563eb;">
+      <div class="rule-id">3.3</div>
+      <div class="rule-content">
+        <div class="rule-title">Neutralità della CRI</div>
+        <div class="rule-body">La Croce Rossa Italiana è neutrale per definizione. Nessun giocatore, di nessuna fazione, può attaccare o ostacolare operatori CRI durante interventi sanitari. Violare questa regola è una delle infrazioni più gravi del server.</div>
+        <span class="rule-sanction">Sanzione: Ban temporaneo → Ban permanente</span>
+      </div>
+    </div>
+    <div class="rule-block" style="--rule-color:#2563eb;">
+      <div class="rule-id">3.4</div>
+      <div class="rule-content">
+        <div class="rule-title">Mafia — Regole Speciali</div>
+        <div class="rule-body">I membri della Mafia devono mantenere la propria copertura civile. Azioni criminali troppo visibili o esplicite senza adeguata motivazione RP possono portare a conseguenze sia in-game (arresti) che meta (espulsione dalla fazione). Il crimine deve essere RP, non DM gratuito.</div>
+        <span class="rule-sanction">Sanzione: Espulsione dalla fazione → Ban</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-tricolore"><div style="background:#009246"></div><div style="background:#f4f0e8"></div><div style="background:#ce2b37"></div></div>
+  <div class="footer-logo">Border Italian RP</div>
+  <div class="footer-copy">© 2025 Border Italian RP · Regolamento v2.4 · Tutti i diritti riservati</div>
+</footer>
+</body>
+</html>

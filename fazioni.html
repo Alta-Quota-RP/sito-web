@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fazioni — Border Italian RP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;600&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --verde: #009246; --bianco: #f4f0e8; --rosso: #ce2b37;
+      --nero: #0a0a0a; --grigio-scuro: #111318; --grigio-medio: #1e2028;
+      --grigio-card: #181b22; --oro: #c8a84b; --testo: #d4cfc5;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--nero); color: var(--testo); font-family: 'Oswald', sans-serif; }
+
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 3rem; height: 64px; background: rgba(10,10,10,0.98);
+      border-bottom: 2px solid var(--verde); position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    }
+    .topbar-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 4px; color: var(--bianco); }
+    .topbar-logo span { color: var(--verde); }
+    .topbar-tricolore { display: flex; gap: 3px; }
+    .stripe { width: 4px; height: 32px; border-radius: 2px; }
+    .stripe-v { background: var(--verde); } .stripe-b { background: var(--bianco); } .stripe-r { background: var(--rosso); }
+    nav.topnav { display: flex; gap: 2rem; }
+    nav.topnav a { color: var(--testo); text-decoration: none; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 400; padding-bottom: 2px; border-bottom: 2px solid transparent; transition: color .2s, border-color .2s; }
+    nav.topnav a:hover, nav.topnav a.active { color: var(--verde); border-bottom-color: var(--verde); }
+
+    .page-header {
+      padding: 120px 3rem 4rem;
+      background: linear-gradient(180deg, #0d1014 0%, var(--nero) 100%);
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .page-header::before {
+      content: 'FAZIONI';
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      font-family: 'Bebas Neue', sans-serif; font-size: 20vw;
+      color: rgba(255,255,255,0.02); letter-spacing: 10px; white-space: nowrap; pointer-events: none;
+    }
+    .page-label { font-size: 0.7rem; letter-spacing: 5px; text-transform: uppercase; color: var(--verde); margin-bottom: 1rem; }
+    .page-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem,8vw,6rem); letter-spacing: 6px; color: var(--bianco); margin-bottom: 1rem; }
+    .page-sub { font-family: 'Source Serif 4', serif; font-weight: 300; font-style: italic; color: rgba(212,207,197,0.5); font-size: 1.1rem; }
+
+    .faction-list { max-width: 1400px; margin: 0 auto; padding: 4rem 3rem; display: flex; flex-direction: column; gap: 2px; }
+
+    .faction-row {
+      display: grid; grid-template-columns: 80px 1fr auto;
+      align-items: center; gap: 2rem; padding: 2rem 2.5rem;
+      background: var(--grigio-card); text-decoration: none; color: inherit;
+      border-left: 4px solid var(--accent, #333);
+      transition: background .25s, transform .25s;
+      position: relative; overflow: hidden;
+    }
+    .faction-row::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(90deg, rgba(var(--accent-rgb, 0,0,0),0.08) 0%, transparent 60%);
+      opacity: 0; transition: opacity .25s;
+    }
+    .faction-row:hover { background: var(--grigio-medio); transform: translateX(4px); }
+    .faction-row:hover::after { opacity: 1; }
+
+    .faction-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--accent, #333); opacity: 0.5; text-align: center; }
+    .faction-info {}
+    .faction-name-big { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 3px; color: var(--bianco); margin-bottom: 4px; }
+    .faction-description { font-size: 0.85rem; color: rgba(212,207,197,0.45); letter-spacing: 0.5px; line-height: 1.5; }
+    .faction-meta { text-align: right; }
+    .faction-tag {
+      display: inline-block; font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase;
+      padding: 4px 12px; border: 1px solid var(--accent, #333); color: var(--accent, #aaa); margin-bottom: 8px;
+    }
+    .faction-link-btn {
+      display: block; font-size: 0.75rem; letter-spacing: 2px; color: rgba(212,207,197,0.3); text-align: right;
+      margin-top: 4px;
+    }
+    .faction-row:hover .faction-link-btn { color: var(--accent, #aaa); }
+
+    footer { background: #060608; border-top: 1px solid rgba(0,146,70,0.15); padding: 3rem; text-align: center; }
+    .footer-tricolore { display: flex; justify-content: center; margin-bottom: 1.5rem; }
+    .footer-tricolore div { width: 48px; height: 4px; }
+    .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 5px; color: rgba(244,240,232,0.4); margin-bottom: 1rem; }
+    .footer-copy { font-size: 0.75rem; letter-spacing: 2px; color: rgba(212,207,197,0.2); text-transform: uppercase; }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-logo">Border <span>Italian</span> RP</div>
+  <nav class="topnav">
+    <a href="index.html">Home</a>
+    <a href="fazioni.html" class="active">Fazioni</a>
+    <a href="regole.html">Regole</a>
+    <a href="mappa.html">Mappa</a>
+    <a href="candidature.html">Candidature</a>
+    <a href="contatti.html">Contatti</a>
+  </nav>
+  <div class="topbar-tricolore">
+    <div class="stripe stripe-v"></div><div class="stripe stripe-b"></div><div class="stripe stripe-r"></div>
+  </div>
+</div>
+
+<div class="page-header">
+  <div class="page-label">Scegli il tuo ruolo</div>
+  <h1 class="page-title">Le Fazioni</h1>
+  <p class="page-sub">Nove fazioni. Un unico confine. La tua storia comincia qui.</p>
+</div>
+
+<div class="faction-list">
+  <a href="polizia-di-stato.html" class="faction-row" style="--accent:#2563eb; --accent-rgb:37,99,235;">
+    <div class="faction-num">01</div>
+    <div class="faction-info">
+      <div class="faction-name-big">👮 Polizia di Stato</div>
+      <div class="faction-description">Tutela dell'ordine pubblico, prevenzione e repressione dei reati. Prima linea della sicurezza cittadina con competenza su tutto il territorio nazionale.</div>
+    </div>
+    <div class="faction-meta">
+      <div class="faction-tag">Forze dell'Ordine</div>
+      <div class="faction-link-btn">Scopri →</div>
+    </div>
+  </a>
+
+  <a href="carabinieri.html" class="faction-row" style="--accent:#c8a84b; --accent-rgb:200,168,75;">
+    <div class="faction-num">02</div>
+    <div class="faction-info">
+      <div class="faction-name-big">🎖️ Arma dei Carabinieri</div>
+      <div class="faction-description">Forza di polizia ad ordinamento militare. Specializzata in investigazioni, polizia giudiziaria e presenza capillare sul territorio italiano e nei piccoli centri.</div>
+    </div>
+    <div class="faction-meta">
+      <div class="faction-tag">Militare / Ordine Pubblico</div>
+      <div class="faction-link-btn">Scopri →</div>
+    </div>
+  </a>
+
+  <a href="guardia-di-finanza.html" class="faction-row" style="--accent:#facc15; --accent-rgb:250,204,21;">
+    <div class="faction-num">03</div>
+    <div class="faction-info">
+      <div class="faction-name-big">💰 Guardia di Finanza</div>
+      <div class="faction-description">Corpo di polizia economico-finanziaria. Contrasta evasione fiscale, riciclaggio, contrabbando e criminalità economica. Dipendente dal Ministero dell'Economia.</div>
+    </div>
+    <div class="faction-meta">
+      <div class="faction-tag">Polizia Finanziaria</div>
+      <div class="faction-link-btn">Scopri →</div>
+    </div>
+  </a>
+
+  <a href="polizia-locale.html" class="faction-row" style="--accent:#16a34a; --accent-rgb:22,163,74;">
+    <div class="faction-num">04</div>
+    <div class="faction-info">
+      <div class="faction-name-big">🚔 Polizia Locale</div>
+      <div class="faction-description">Vigilanza urbana, controllo del traffico, regolamentazione del suolo pubblico e supporto alle forze dell'ordine nazionali nell'area municipale.</div>
+    </div>
+    <div class="faction-meta">
+      <div class="faction-tag">Municipale</div>
+      <div class="faction-link-btn">Scopri →</div>
+    </div>
+  </a>
+
+  <a href="esercito.html" class="faction-row" style="--accent:#4d7c52; --accent-rgb:77,124,82;">
+    <div class="faction-num">05</div>
+    <div class="faction-info">
+      <div class="faction-name-big">🪖 Esercito Militare</div>
+      <div class="faction-description">Forza armata dello Stato. Difesa dei confini nazionali, operazioni speciali, supporto alle autorità civili in caso di emergenza e missioni ad alto rischio.</div>
+    </div>
+    <div class="faction-meta">
+      <div class="faction-tag">Forze Armate</div>
+      <div class="faction-link-btn">Scopri →</div>
+    </div>
+  </a>
+
+  <a href="vigili-del-fuoco.html" class="faction-row" style="--accent:#ef4444; --accent-rgb:239,68,68;">
+    <div class="faction-num">06</div>
+    <div class="faction-info">
+      <div class="faction-name-big">🚒 Vigili del Fuoco</div>
+      <div class="faction-description">Soccorso tecnico urgente, antincendio, gestione delle emergenze e protezione civile. Sempre in prima linea nei momenti di crisi per salvare vite umane.</div>
+    </div>
+    <div class="faction-meta">
+      <div class="faction-tag">Soccorso Tecnico</div>
+      <div class="faction-link-btn">Scopri →</div>
+    </div>
+  </a>
+
+  <a href="croce-rossa.html" class="faction-row" style="--accent:#dc2626; --accent-rgb:220,38,38;">
+    <div class="faction-num">07</div>
+    <div class="faction-info">
+      <div class="faction-name-big">🏥 Croce Rossa Italiana</div>
+      <div class="faction-description">Assistenza sanitaria d'emergenza, trasporto infermi, supporto umanitario alla popolazione. Basata sui principi di neutralità, imparzialità e umanità.</div>
+    </div>
+    <div class="faction-meta">
+      <div class="faction-tag">Sanitario / Umanitario</div>
+      <div class="faction-link-btn">Scopri →</div>
+    </div>
+  </a>
+
+  <a href="mafia.html" class="faction-row" style="--accent:#7f1d1d; --accent-rgb:127,29,29;">
+    <div class="faction-num">08</div>
+    <div class="faction-info">
+      <div class="faction-name-big">🔫 Mafia</div>
+      <div class="faction-description">Organizzazione criminale strutturata e gerarchica. Controlla traffici illeciti, gestisce il territorio attraverso violenza e corruzione. Agisce nell'ombra ma muove i fili del potere.</div>
+    </div>
+    <div class="faction-meta">
+      <div class="faction-tag">Crimine Organizzato</div>
+      <div class="faction-link-btn">Scopri →</div>
+    </div>
+  </a>
+
+  <a href="cittadini.html" class="faction-row" style="--accent:#6b7280; --accent-rgb:107,114,128;">
+    <div class="faction-num">09</div>
+    <div class="faction-info">
+      <div class="faction-name-big">🏙️ Cittadini</div>
+      <div class="faction-description">La spina dorsale del server. I cittadini vivono la quotidianità, lavorano, interagiscono con tutte le fazioni e danno vita all'ecosistema sociale di Border Italian RP.</div>
+    </div>
+    <div class="faction-meta">
+      <div class="faction-tag">Civili</div>
+      <div class="faction-link-btn">Scopri →</div>
+    </div>
+  </a>
+</div>
+
+<footer>
+  <div class="footer-tricolore"><div style="background:var(--verde)"></div><div style="background:var(--bianco)"></div><div style="background:var(--rosso)"></div></div>
+  <div class="footer-logo">Border Italian RP</div>
+  <div class="footer-copy">© 2025 Border Italian RP · Tutti i diritti riservati</div>
+</footer>
+</body>
+</html>

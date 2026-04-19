@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mappa — Border Italian RP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;600&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <style>
+    :root { --verde: #009246; --bianco: #f4f0e8; --rosso: #ce2b37; --nero: #0a0a0a; --grigio-scuro: #111318; --grigio-medio: #1e2028; --grigio-card: #181b22; --testo: #d4cfc5; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--nero); color: var(--testo); font-family: 'Oswald', sans-serif; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; padding: 0 3rem; height: 64px; background: rgba(10,10,10,0.98); border-bottom: 2px solid var(--verde); position: fixed; top: 0; left: 0; right: 0; z-index: 100; }
+    .topbar-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 4px; color: var(--bianco); }
+    .topbar-logo span { color: var(--verde); }
+    .topbar-tricolore { display: flex; gap: 3px; }
+    .stripe { width: 4px; height: 32px; border-radius: 2px; }
+    .stripe-v { background: var(--verde); } .stripe-b { background: var(--bianco); } .stripe-r { background: var(--rosso); }
+    nav.topnav { display: flex; gap: 2rem; }
+    nav.topnav a { color: var(--testo); text-decoration: none; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; padding-bottom: 2px; border-bottom: 2px solid transparent; transition: color .2s, border-color .2s; }
+    nav.topnav a:hover, nav.topnav a.active { color: var(--verde); border-bottom-color: var(--verde); }
+
+    .page-header { padding: 120px 3rem 4rem; background: linear-gradient(180deg, #0d1014 0%, var(--nero) 100%); text-align: center; }
+    .page-label { font-size: 0.7rem; letter-spacing: 5px; text-transform: uppercase; color: var(--verde); margin-bottom: 1rem; }
+    .page-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem,8vw,6rem); letter-spacing: 6px; color: var(--bianco); margin-bottom: 1rem; }
+    .page-sub { font-family: 'Source Serif 4', serif; font-weight: 300; font-style: italic; color: rgba(212,207,197,0.5); font-size: 1.1rem; }
+
+    .map-layout { max-width: 1400px; margin: 0 auto; padding: 4rem 3rem; display: grid; grid-template-columns: 1fr 340px; gap: 2rem; align-items: start; }
+
+    .map-container {
+      background: var(--grigio-card);
+      border: 1px solid rgba(0,146,70,0.15);
+      position: relative;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+    }
+
+    /* SVG MAP */
+    .map-svg { width: 100%; height: 100%; }
+
+    /* District labels */
+    .district { cursor: pointer; transition: opacity .2s; }
+    .district:hover .district-fill { opacity: 0.6; }
+    .district-fill { opacity: 0.35; transition: opacity .2s; }
+
+    .map-pin { cursor: pointer; }
+    .pin-circle { transition: r .2s; }
+    .map-pin:hover .pin-circle { r: 10; }
+
+    .map-legend { background: var(--grigio-card); border: 1px solid rgba(255,255,255,0.05); padding: 2rem; }
+    .legend-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 3px; color: var(--verde); margin-bottom: 1.5rem; }
+    .legend-item { display: flex; align-items: center; gap: 12px; padding: 0.8rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 0.85rem; color: rgba(212,207,197,0.6); }
+    .legend-item:last-child { border-bottom: none; }
+    .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+
+    .zone-cards { max-width: 1400px; margin: 0 auto; padding: 0 3rem 5rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.04); }
+    .zone-card { background: var(--grigio-card); padding: 2rem; border-top: 3px solid var(--zone-color, #333); }
+    .zone-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 2px; color: var(--bianco); margin-bottom: 0.5rem; }
+    .zone-desc { font-size: 0.82rem; color: rgba(212,207,197,0.45); line-height: 1.6; margin-bottom: 1rem; }
+    .zone-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .zone-tag { font-size: 0.65rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border: 1px solid var(--zone-color, #333); color: var(--zone-color, #aaa); }
+
+    footer { background: #060608; border-top: 1px solid rgba(0,146,70,0.15); padding: 3rem; text-align: center; }
+    .footer-tricolore { display: flex; justify-content: center; margin-bottom: 1.5rem; }
+    .footer-tricolore div { width: 48px; height: 4px; }
+    .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 5px; color: rgba(244,240,232,0.4); margin-bottom: 1rem; }
+    .footer-copy { font-size: 0.75rem; letter-spacing: 2px; color: rgba(212,207,197,0.2); text-transform: uppercase; }
+  </style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-logo">Border <span>Italian</span> RP</div>
+  <nav class="topnav">
+    <a href="index.html">Home</a><a href="fazioni.html">Fazioni</a><a href="regole.html">Regole</a><a href="mappa.html" class="active">Mappa</a><a href="candidature.html">Candidature</a><a href="contatti.html">Contatti</a>
+  </nav>
+  <div class="topbar-tricolore"><div class="stripe stripe-v"></div><div class="stripe stripe-b"></div><div class="stripe stripe-r"></div></div>
+</div>
+
+<div class="page-header">
+  <div class="page-label">Zona di Gioco</div>
+  <h1 class="page-title">La Mappa</h1>
+  <p class="page-sub">Ogni zona ha la sua storia, i suoi pericoli, le sue opportunità.</p>
+</div>
+
+<div class="map-layout">
+  <div class="map-container">
+    <svg class="map-svg" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+      <!-- Background -->
+      <rect width="800" height="600" fill="#0d1014"/>
+      <!-- Grid -->
+      <defs>
+        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(0,146,70,0.06)" stroke-width="1"/>
+        </pattern>
+      </defs>
+      <rect width="800" height="600" fill="url(#grid)"/>
+
+      <!-- Districts -->
+      <!-- Centro Storico -->
+      <g class="district">
+        <polygon class="district-fill" points="300,150 500,150 520,280 480,300 300,290 280,260" fill="#2563eb"/>
+        <text x="390" y="220" text-anchor="middle" fill="rgba(244,240,232,0.5)" font-family="'Bebas Neue',sans-serif" font-size="14" letter-spacing="2">CENTRO STORICO</text>
+      </g>
+      <!-- Porto -->
+      <g class="district">
+        <polygon class="district-fill" points="520,280 650,250 700,350 640,400 520,380 480,300" fill="#009246"/>
+        <text x="595" y="335" text-anchor="middle" fill="rgba(244,240,232,0.5)" font-family="'Bebas Neue',sans-serif" font-size="13" letter-spacing="2">PORTO</text>
+      </g>
+      <!-- Zona Industriale -->
+      <g class="district">
+        <polygon class="district-fill" points="100,300 280,260 300,420 200,480 80,430" fill="#4d7c52"/>
+        <text x="185" y="375" text-anchor="middle" fill="rgba(244,240,232,0.5)" font-family="'Bebas Neue',sans-serif" font-size="12" letter-spacing="1">ZONA IND.</text>
+      </g>
+      <!-- Quartiere Sud -->
+      <g class="district">
+        <polygon class="district-fill" points="300,420 480,380 520,480 440,540 300,540 280,480" fill="#991b1b"/>
+        <text x="395" y="475" text-anchor="middle" fill="rgba(244,240,232,0.5)" font-family="'Bebas Neue',sans-serif" font-size="12" letter-spacing="1">QUARTIERE SUD</text>
+      </g>
+      <!-- Collina Nord -->
+      <g class="district">
+        <polygon class="district-fill" points="200,80 500,80 520,160 500,150 300,150 280,160 200,150" fill="#c8a84b"/>
+        <text x="360" y="120" text-anchor="middle" fill="rgba(244,240,232,0.5)" font-family="'Bebas Neue',sans-serif" font-size="12" letter-spacing="1">COLLINA NORD</text>
+      </g>
+
+      <!-- Roads -->
+      <line x1="400" y1="0" x2="400" y2="600" stroke="rgba(244,240,232,0.06)" stroke-width="3"/>
+      <line x1="0" y1="300" x2="800" y2="300" stroke="rgba(244,240,232,0.06)" stroke-width="3"/>
+      <line x1="200" y1="0" x2="600" y2="600" stroke="rgba(244,240,232,0.04)" stroke-width="2"/>
+
+      <!-- POI Pins -->
+      <!-- Questura -->
+      <g class="map-pin">
+        <circle class="pin-circle" cx="390" cy="200" r="8" fill="#2563eb" opacity="0.9"/>
+        <text x="390" y="185" text-anchor="middle" fill="#fff" font-family="'Oswald',sans-serif" font-size="10" letter-spacing="1">QUESTURA</text>
+        <text x="390" y="202" text-anchor="middle" fill="white" font-size="8">👮</text>
+      </g>
+      <!-- Caserma Carabinieri -->
+      <g class="map-pin">
+        <circle class="pin-circle" cx="340" cy="230" r="8" fill="#c8a84b" opacity="0.9"/>
+        <text x="340" y="215" text-anchor="middle" fill="#fff" font-family="'Oswald',sans-serif" font-size="10" letter-spacing="1">CASERMA CC</text>
+        <text x="340" y="232" text-anchor="middle" fill="white" font-size="8">🎖️</text>
+      </g>
+      <!-- Porto GdF -->
+      <g class="map-pin">
+        <circle class="pin-circle" cx="600" cy="310" r="8" fill="#d4a017" opacity="0.9"/>
+        <text x="600" y="295" text-anchor="middle" fill="#fff" font-family="'Oswald',sans-serif" font-size="10" letter-spacing="1">DOGANA</text>
+        <text x="600" y="312" text-anchor="middle" fill="white" font-size="8">💰</text>
+      </g>
+      <!-- Ospedale CRI -->
+      <g class="map-pin">
+        <circle class="pin-circle" cx="430" cy="420" r="8" fill="#dc2626" opacity="0.9"/>
+        <text x="430" y="405" text-anchor="middle" fill="#fff" font-family="'Oswald',sans-serif" font-size="10" letter-spacing="1">OSPEDALE</text>
+        <text x="430" y="422" text-anchor="middle" fill="white" font-size="8">🏥</text>
+      </g>
+      <!-- Caserma VdF -->
+      <g class="map-pin">
+        <circle class="pin-circle" cx="180" cy="360" r="8" fill="#ef4444" opacity="0.9"/>
+        <text x="180" y="345" text-anchor="middle" fill="#fff" font-family="'Oswald',sans-serif" font-size="10" letter-spacing="1">VdF</text>
+        <text x="180" y="362" text-anchor="middle" fill="white" font-size="8">🚒</text>
+      </g>
+      <!-- Base Militare -->
+      <g class="map-pin">
+        <circle class="pin-circle" cx="120" cy="180" r="8" fill="#4d7c52" opacity="0.9"/>
+        <text x="120" y="165" text-anchor="middle" fill="#fff" font-family="'Oswald',sans-serif" font-size="10" letter-spacing="1">BASE MIL.</text>
+        <text x="120" y="182" text-anchor="middle" fill="white" font-size="8">🪖</text>
+      </g>
+      <!-- Mafia HQ (unnamed) -->
+      <g class="map-pin">
+        <circle class="pin-circle" cx="350" cy="490" r="8" fill="#7f1d1d" opacity="0.7"/>
+        <text x="350" y="475" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="'Oswald',sans-serif" font-size="10" letter-spacing="1">???</text>
+      </g>
+
+      <!-- Compass Rose -->
+      <g transform="translate(740,70)">
+        <text text-anchor="middle" y="-20" fill="rgba(212,207,197,0.4)" font-family="'Bebas Neue',sans-serif" font-size="14">N</text>
+        <line x1="0" y1="-15" x2="0" y2="15" stroke="rgba(0,146,70,0.4)" stroke-width="1"/>
+        <line x1="-15" y1="0" x2="15" y2="0" stroke="rgba(0,146,70,0.4)" stroke-width="1"/>
+        <circle r="20" fill="none" stroke="rgba(0,146,70,0.2)" stroke-width="1"/>
+      </g>
+
+      <!-- Border lines -->
+      <rect x="0" y="0" width="800" height="600" fill="none" stroke="rgba(0,146,70,0.15)" stroke-width="2"/>
+    </svg>
+  </div>
+
+  <div>
+    <div class="map-legend">
+      <div class="legend-title">Legenda</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#2563eb"></div> Centro Storico · Questura</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#c8a84b"></div> Collina Nord · Caserma CC</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#009246"></div> Porto · Dogana GdF</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#4d7c52"></div> Zona Ind. · Base Militare</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#ef4444"></div> 🚒 Caserma Vigili del Fuoco</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#dc2626"></div> 🏥 Ospedale / CRI</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#991b1b"></div> Quartiere Sud · zona ad alto rischio</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#7f1d1d"></div> ??? Localizzazione sconosciuta</div>
+    </div>
+  </div>
+</div>
+
+<div class="zone-cards">
+  <div class="zone-card" style="--zone-color:#2563eb;">
+    <div class="zone-name">🏛️ Centro Storico</div>
+    <div class="zone-desc">Il cuore pulsante della città. Sede delle istituzioni, della vita commerciale e dei principali eventi roleplay. Alta presenza di pattuglie delle forze dell'ordine.</div>
+    <div class="zone-tags"><span class="zone-tag">Bassa criminalità</span><span class="zone-tag">Uffici pubblici</span><span class="zone-tag">Commercio</span></div>
+  </div>
+  <div class="zone-card" style="--zone-color:#c8a84b;">
+    <div class="zone-name">⛰️ Collina Nord</div>
+    <div class="zone-desc">Area residenziale benestante. Villa private, ristoranti di lusso, quartier generale dei Carabinieri. Zona tranquilla ma non esente da traffici nascosti.</div>
+    <div class="zone-tags"><span class="zone-tag">Residenziale</span><span class="zone-tag">Alta borghesia</span><span class="zone-tag">Carabinieri</span></div>
+  </div>
+  <div class="zone-card" style="--zone-color:#009246;">
+    <div class="zone-name">⚓ Porto</div>
+    <div class="zone-desc">Fulcro del commercio e del contrabbando. La Guardia di Finanza presidia i varchi, ma i container nascondono segreti. Teatro di operazioni ad alto rischio.</div>
+    <div class="zone-tags"><span class="zone-tag">Contrabbando</span><span class="zone-tag">GdF</span><span class="zone-tag">Alto rischio</span></div>
+  </div>
+  <div class="zone-card" style="--zone-color:#4d7c52;">
+    <div class="zone-name">🏭 Zona Industriale</div>
+    <div class="zone-desc">Capannoni abbandonati, fabbriche attive e depositi. Base operativa dell'Esercito e luogo preferito per incontri criminali lontano dagli occhi del centro.</div>
+    <div class="zone-tags"><span class="zone-tag">Esercito</span><span class="zone-tag">Criminalità</span><span class="zone-tag">Operazioni notturne</span></div>
+  </div>
+  <div class="zone-card" style="--zone-color:#991b1b;">
+    <div class="zone-name">🔫 Quartiere Sud</div>
+    <div class="zone-desc">La zona più pericolosa del server. Alta presenza mafiosa, bassi fondali abitati da personaggi borderline. Le forze dell'ordine entrano solo in squadra.</div>
+    <div class="zone-tags"><span class="zone-tag">Criminalità alta</span><span class="zone-tag">Mafia</span><span class="zone-tag">Zona rossa</span></div>
+  </div>
+  <div class="zone-card" style="--zone-color:#dc2626;">
+    <div class="zone-name">🏥 Distretto Sanitario</div>
+    <div class="zone-desc">L'ospedale e le strutture della Croce Rossa. Zona neutrale per definizione: nessuna azione violenta è permessa nelle sue vicinanze. Rifugio per chiunque sia ferito.</div>
+    <div class="zone-tags"><span class="zone-tag">Zona neutra</span><span class="zone-tag">CRI</span><span class="zone-tag">Ospedale</span></div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-tricolore"><div style="background:#009246"></div><div style="background:#f4f0e8"></div><div style="background:#ce2b37"></div></div>
+  <div class="footer-logo">Border Italian RP</div>
+  <div class="footer-copy">© 2025 Border Italian RP · Mappa non in scala · Solo per uso roleplay</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arma dei Carabinieri — Border Italian RP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;600&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --verde: #009246; --bianco: #f4f0e8; --rosso: #ce2b37;
+      --nero: #0a0a0a; --grigio-scuro: #111318; --grigio-medio: #1e2028;
+      --grigio-card: #181b22; --oro: #c8a84b; --testo: #d4cfc5;
+      --accent: #c8a84b; --accent2: #a08030;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--nero); color: var(--testo); font-family: 'Oswald', sans-serif; }
+
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 3rem; height: 64px; background: rgba(10,10,10,0.98);
+      border-bottom: 2px solid var(--accent); position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    }
+    .topbar-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 4px; color: var(--bianco); }
+    .topbar-logo span { color: var(--verde); }
+    .topbar-tricolore { display: flex; gap: 3px; }
+    .stripe { width: 4px; height: 32px; border-radius: 2px; }
+    .stripe-v { background: var(--verde); } .stripe-b { background: var(--bianco); } .stripe-r { background: var(--rosso); }
+    nav.topnav { display: flex; gap: 2rem; }
+    nav.topnav a { color: var(--testo); text-decoration: none; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; padding-bottom: 2px; border-bottom: 2px solid transparent; transition: color .2s, border-color .2s; }
+    nav.topnav a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+    .faction-hero {
+      min-height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      position: relative; overflow: hidden; padding-top: 64px;
+      background: linear-gradient(180deg, var(--hero-dark, #050508) 0%, var(--nero) 100%);
+    }
+    .faction-hero-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 70% at 50% 40%, rgba(200,168,75,0.10) 0%, transparent 65%);
+    }
+    .faction-hero-grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(#c8a84b08 1px, transparent 1px), linear-gradient(90deg, #c8a84b08 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .faction-hero-content { position: relative; z-index: 1; text-align: center; padding: 2rem; }
+    .faction-icon-big { font-size: 5rem; margin-bottom: 1.5rem; display: block; filter: drop-shadow(0 0 30px #c8a84b60); }
+    .faction-badge {
+      display: inline-block; font-size: 0.7rem; letter-spacing: 5px; text-transform: uppercase;
+      color: var(--accent); border: 1px solid #c8a84b50; padding: 6px 18px; margin-bottom: 1.5rem;
+    }
+    .faction-title {
+      font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem,9vw,7rem);
+      letter-spacing: 6px; color: var(--bianco); line-height: 0.95; margin-bottom: 1rem;
+    }
+    .faction-motto {
+      font-family: 'Source Serif 4', serif; font-weight: 300; font-style: italic;
+      font-size: 1.1rem; color: rgba(212,207,197,0.5); letter-spacing: 1px;
+    }
+
+    .content-grid {
+      max-width: 1400px; margin: 0 auto; padding: 5rem 3rem;
+      display: grid; grid-template-columns: 2fr 1fr; gap: 4rem; align-items: start;
+    }
+    .section-label { font-size: 0.7rem; letter-spacing: 5px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem; }
+    .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; letter-spacing: 3px; color: var(--bianco); margin-bottom: 1.5rem; }
+    .section-body { font-family: 'Source Serif 4', serif; font-weight: 300; font-size: 1.02rem; line-height: 1.9; color: rgba(212,207,197,0.7); }
+
+    .sidebar-card {
+      background: var(--grigio-card); border-left: 3px solid var(--accent);
+      padding: 2rem; margin-bottom: 1.5rem;
+    }
+    .sidebar-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 2px; color: var(--accent); margin-bottom: 1rem; }
+    .sidebar-list { list-style: none; }
+    .sidebar-list li {
+      padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-size: 0.85rem; color: rgba(212,207,197,0.6); display: flex; align-items: center; gap: 8px;
+    }
+    .sidebar-list li::before { content: '→'; color: var(--accent); flex-shrink: 0; }
+    .sidebar-list li:last-child { border-bottom: none; }
+
+    .ranks-section {
+      background: var(--grigio-scuro); border-top: 1px solid rgba(255,255,255,0.04);
+      padding: 5rem 3rem;
+    }
+    .ranks-inner { max-width: 1400px; margin: 0 auto; }
+    .ranks-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1px; background: rgba(255,255,255,0.04); margin-top: 2rem; }
+    .rank-card { background: var(--grigio-card); padding: 1.5rem; position: relative; }
+    .rank-level {
+      font-family: 'Bebas Neue', sans-serif; font-size: 0.8rem; letter-spacing: 3px;
+      color: var(--accent); margin-bottom: 0.5rem; opacity: 0.7;
+    }
+    .rank-name { font-size: 1rem; font-weight: 600; letter-spacing: 1px; color: var(--bianco); margin-bottom: 4px; }
+    .rank-desc { font-size: 0.78rem; color: rgba(212,207,197,0.4); line-height: 1.5; }
+
+    .cta-bar {
+      background: var(--accent); padding: 3rem; text-align: center;
+    }
+    .cta-bar h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 4px; color: #fff; margin-bottom: 1rem; }
+    .btn {
+      font-family: 'Oswald', sans-serif; font-size: 0.85rem; letter-spacing: 3px;
+      text-transform: uppercase; text-decoration: none; padding: 14px 36px; display: inline-block; transition: all .25s;
+      background: rgba(0,0,0,0.3); color: #fff; border: 1px solid rgba(255,255,255,0.4); margin: 0 0.5rem;
+    }
+    .btn:hover { background: rgba(0,0,0,0.5); }
+
+    footer { background: #060608; border-top: 1px solid rgba(0,146,70,0.15); padding: 3rem; text-align: center; }
+    .footer-tricolore { display: flex; justify-content: center; margin-bottom: 1.5rem; }
+    .footer-tricolore div { width: 48px; height: 4px; }
+    .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 5px; color: rgba(244,240,232,0.4); margin-bottom: 1rem; }
+    .footer-copy { font-size: 0.75rem; letter-spacing: 2px; color: rgba(212,207,197,0.2); text-transform: uppercase; }
+  </style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-logo">Border <span>Italian</span> RP</div>
+  <nav class="topnav">
+    <a href="index.html">Home</a>
+    <a href="fazioni.html">Fazioni</a>
+    <a href="regole.html">Regole</a>
+    <a href="mappa.html">Mappa</a>
+    <a href="candidature.html">Candidature</a>
+    <a href="contatti.html">Contatti</a>
+  </nav>
+  <div class="topbar-tricolore"><div class="stripe stripe-v"></div><div class="stripe stripe-b"></div><div class="stripe stripe-r"></div></div>
+</div>
+<div class="faction-hero">
+  <div class="faction-hero-bg"></div>
+  <div class="faction-hero-grid"></div>
+  <div class="faction-hero-content">
+    <span class="faction-icon-big">🎖️</span>
+    <div class="faction-badge">Arma Militare</div>
+    <h1 class="faction-title">Arma dei Carabinieri</h1>
+    <p class="faction-motto">Nei secoli fedele.</p>
+  </div>
+</div>
+
+<div class="content-grid">
+  <div>
+    <div class="section-label">Chi siamo</div>
+    <h2 class="section-title">La Fazione</h2>
+    <div class="section-body"><p>L'Arma dei Carabinieri è una forza di polizia a ordinamento militare, tra le quattro forze armate italiane. È caratterizzata da una presenza capillare sul territorio, inclusi piccoli comuni e zone rurali difficilmente raggiunte da altre forze.</p><br><p>In Border Italian RP i Carabinieri si distinguono per la loro duplice natura: militare e di polizia. Conducono indagini complesse, operano in stretto contatto con la magistratura, gestiscono il ROS (Raggruppamento Operativo Speciale) per la lotta alla criminalità organizzata e sono presenti in ogni angolo del territorio.</p><br></div>
+  </div>
+  <div>
+    <div class="sidebar-card">
+      <div class="sidebar-title">Responsabilità</div>
+      <ul class="sidebar-list"><li>Presidio capillare del territorio</li><li>Polizia giudiziaria</li><li>Operazioni antimafia (ROS)</li><li>Nucleo Investigativo</li><li>Supporto alla magistratura</li><li>Operazioni in aree rurali</li><li>Missioni all'estero</li></ul>
+    </div>
+    <div class="sidebar-card">
+      <div class="sidebar-title">Candidatura</div>
+      <ul class="sidebar-list">
+        <li>Compila il modulo candidature</li>
+        <li>Attendi la risposta dello staff</li>
+        <li>Supera il colloquio RP</li>
+        <li>Inizia il periodo di prova</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="ranks-section">
+  <div class="ranks-inner">
+    <div class="section-label">Gerarchia</div>
+    <h2 class="section-title">Gradi e Ranghi</h2>
+    <div class="ranks-grid">
+        <div class="rank-card">
+          <div class="rank-level">Livello 1 · Recluta</div>
+          <div class="rank-name">Carabiniere</div>
+          <div class="rank-desc">Ingresso nell'Arma</div>
+        </div>
+        <div class="rank-card">
+          <div class="rank-level">Livello 2 · Junior</div>
+          <div class="rank-name">Appuntato</div>
+          <div class="rank-desc">Prima progressione di carriera</div>
+        </div>
+        <div class="rank-card">
+          <div class="rank-level">Livello 3 · Intermedio</div>
+          <div class="rank-name">Vicebrigadiere</div>
+          <div class="rank-desc">Ruolo di supporto</div>
+        </div>
+        <div class="rank-card">
+          <div class="rank-level">Livello 4 · Avanzato</div>
+          <div class="rank-name">Brigadiere</div>
+          <div class="rank-desc">Guida di pattuglie</div>
+        </div>
+        <div class="rank-card">
+          <div class="rank-level">Livello 5 · Senior</div>
+          <div class="rank-name">Maresciallo</div>
+          <div class="rank-desc">Comando stazione</div>
+        </div>
+        <div class="rank-card">
+          <div class="rank-level">Livello 6 · Comando</div>
+          <div class="rank-name">Tenente Colonnello</div>
+          <div class="rank-desc">Vertice del Reparto</div>
+        </div></div>
+  </div>
+</div>
+
+<div class="cta-bar">
+  <h3>Unisciti alla Arma dei Carabinieri</h3>
+  <a href="candidature.html" class="btn">Compila la Candidatura</a>
+  <a href="fazioni.html" class="btn">Torna alle Fazioni</a>
+</div>
+
+<footer>
+  <div class="footer-tricolore"><div style="background:#009246"></div><div style="background:#f4f0e8"></div><div style="background:#ce2b37"></div></div>
+  <div class="footer-logo">Border Italian RP</div>
+  <div class="footer-copy">© 2025 Border Italian RP · Tutti i diritti riservati</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Border Italian RP — Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;600&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --verde: #009246;
+      --bianco: #f4f0e8;
+      --rosso: #ce2b37;
+      --nero: #0a0a0a;
+      --grigio-scuro: #111318;
+      --grigio-medio: #1e2028;
+      --grigio-card: #181b22;
+      --oro: #c8a84b;
+      --testo: #d4cfc5;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--nero);
+      color: var(--testo);
+      font-family: 'Oswald', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* TOPBAR */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 3rem;
+      height: 64px;
+      background: rgba(10,10,10,0.98);
+      border-bottom: 2px solid var(--verde);
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+    }
+    .topbar-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 4px;
+      color: var(--bianco);
+    }
+    .topbar-logo span { color: var(--verde); }
+    .topbar-tricolore {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      gap: 3px;
+    }
+    .topbar-tricolore .stripe {
+      width: 4px;
+      height: 32px;
+      border-radius: 2px;
+    }
+    .stripe-v { background: var(--verde); }
+    .stripe-b { background: var(--bianco); }
+    .stripe-r { background: var(--rosso); }
+
+    nav.topnav {
+      display: flex;
+      gap: 2rem;
+    }
+    nav.topnav a {
+      color: var(--testo);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 400;
+      padding-bottom: 2px;
+      border-bottom: 2px solid transparent;
+      transition: color .2s, border-color .2s;
+    }
+    nav.topnav a:hover {
+      color: var(--verde);
+      border-bottom-color: var(--verde);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 64px;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 50% 40%, rgba(0,146,70,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(206,43,55,0.06) 0%, transparent 60%),
+        linear-gradient(180deg, #0a0a0a 0%, #0d1014 100%);
+      z-index: 0;
+    }
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,146,70,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,146,70,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 2rem;
+    }
+    .hero-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--verde);
+      border: 1px solid rgba(0,146,70,0.4);
+      padding: 6px 18px;
+      margin-bottom: 2rem;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 300;
+    }
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 12vw, 9rem);
+      line-height: 0.9;
+      letter-spacing: 8px;
+      color: var(--bianco);
+      margin-bottom: 0.4rem;
+    }
+    .hero-title .accent-v { color: var(--verde); }
+    .hero-title .accent-r { color: var(--rosso); }
+    .hero-subtitle {
+      font-family: 'Source Serif 4', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: rgba(212,207,197,0.6);
+      margin-bottom: 3rem;
+      letter-spacing: 1px;
+    }
+    .hero-cta-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 36px;
+      cursor: pointer;
+      border: none;
+      transition: all .25s;
+      display: inline-block;
+    }
+    .btn-primary {
+      background: var(--verde);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background: #00b356;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,146,70,0.3);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--bianco);
+      border: 1px solid rgba(244,240,232,0.3);
+    }
+    .btn-outline:hover {
+      border-color: var(--bianco);
+      background: rgba(244,240,232,0.05);
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(212,207,197,0.3);
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      animation: bounce 2s ease-in-out infinite;
+    }
+    .hero-scroll::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(0,146,70,0.6), transparent);
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* STATS BAR */
+    .stats-bar {
+      background: var(--grigio-medio);
+      border-top: 1px solid rgba(0,146,70,0.2);
+      border-bottom: 1px solid rgba(0,146,70,0.2);
+      padding: 2rem 3rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      text-align: center;
+      gap: 1rem;
+    }
+    .stat-item { padding: 1rem; }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      color: var(--verde);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(212,207,197,0.5);
+      margin-top: 4px;
+    }
+
+    /* SECTION */
+    section { padding: 6rem 3rem; max-width: 1400px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--verde);
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      letter-spacing: 4px;
+      color: var(--bianco);
+      margin-bottom: 2rem;
+    }
+    .section-body {
+      font-family: 'Source Serif 4', serif;
+      font-weight: 300;
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: rgba(212,207,197,0.7);
+      max-width: 600px;
+    }
+
+    /* FACTIONS GRID */
+    .factions-intro {
+      background: var(--grigio-scuro);
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    .factions-intro-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 6rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .factions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.04);
+    }
+    .faction-card {
+      background: var(--grigio-card);
+      padding: 2rem 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+      transition: background .25s;
+      border-bottom: 3px solid transparent;
+    }
+    .faction-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity .25s;
+    }
+    .faction-card:hover { background: var(--grigio-medio); }
+    .faction-card:hover::before { opacity: 1; }
+    .faction-card:hover { border-bottom-color: var(--accent); }
+    .faction-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .faction-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      color: var(--bianco);
+      margin-bottom: 0.5rem;
+    }
+    .faction-desc {
+      font-size: 0.8rem;
+      color: rgba(212,207,197,0.45);
+      letter-spacing: 1px;
+      line-height: 1.6;
+    }
+    .faction-arrow {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      color: rgba(212,207,197,0.2);
+      font-size: 1.2rem;
+      transition: color .25s, transform .25s;
+    }
+    .faction-card:hover .faction-arrow {
+      color: var(--accent);
+      transform: translateX(4px);
+    }
+
+    /* REGOLE PREVIEW */
+    .rules-section {
+      background: linear-gradient(135deg, var(--grigio-scuro) 0%, var(--nero) 100%);
+      padding: 6rem 3rem;
+    }
+    .rules-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .rules-list { margin-top: 2rem; }
+    .rule-item {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .rule-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: rgba(0,146,70,0.3);
+      line-height: 1;
+      min-width: 40px;
+    }
+    .rule-text { font-size: 0.9rem; line-height: 1.7; color: rgba(212,207,197,0.6); }
+    .rule-text strong { color: var(--bianco); font-weight: 600; display: block; margin-bottom: 4px; font-size: 0.95rem; letter-spacing: 1px; }
+
+    /* FOOTER */
+    footer {
+      background: #060608;
+      border-top: 1px solid rgba(0,146,70,0.15);
+      padding: 3rem;
+      text-align: center;
+    }
+    .footer-tricolore {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 1.5rem;
+    }
+    .footer-tricolore div {
+      width: 48px;
+      height: 4px;
+    }
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 5px;
+      color: rgba(244,240,232,0.4);
+      margin-bottom: 1rem;
+    }
+    .footer-copy {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      color: rgba(212,207,197,0.2);
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-logo">Border <span>Italian</span> RP</div>
+  <nav class="topnav">
+    <a href="index.html">Home</a>
+    <a href="fazioni.html">Fazioni</a>
+    <a href="regole.html">Regole</a>
+    <a href="mappa.html">Mappa</a>
+    <a href="candidature.html">Candidature</a>
+    <a href="contatti.html">Contatti</a>
+  </nav>
+  <div class="topbar-tricolore">
+    <div class="stripe stripe-v"></div>
+    <div class="stripe stripe-b"></div>
+    <div class="stripe stripe-r"></div>
+  </div>
+</div>
+
+<main>
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Roleplay · Italia · Immersione Totale</div>
+      <h1 class="hero-title">
+        <span class="accent-v">Border</span><br>
+        <span>Italian</span><br>
+        <span class="accent-r">RP</span>
+      </h1>
+      <p class="hero-subtitle">Il confine tra finzione e realtà si assottiglia</p>
+      <div class="hero-cta-group">
+        <a href="fazioni.html" class="btn btn-primary">Scegli la tua Fazione</a>
+        <a href="regole.html" class="btn btn-outline">Leggi il Regolamento</a>
+      </div>
+    </div>
+    <div class="hero-scroll">Scorri</div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-num">9</div>
+      <div class="stat-label">Fazioni Attive</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">500+</div>
+      <div class="stat-label">Giocatori</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">24/7</div>
+      <div class="stat-label">Server Online</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Roleplay Serio</div>
+    </div>
+  </div>
+
+  <div class="factions-intro">
+    <div class="factions-intro-inner">
+      <div>
+        <div class="section-label">Le Fazioni</div>
+        <h2 class="section-title">Chi vuoi<br>essere?</h2>
+        <p class="section-body">Ogni fazione ha il suo ruolo, la sua gerarchia e le sue responsabilità. Scegli con saggezza: la tua scelta definirà il tuo percorso all'interno di Border Italian RP.</p>
+        <br>
+        <a href="fazioni.html" class="btn btn-primary" style="margin-top:1rem">Vedi tutte le fazioni</a>
+      </div>
+      <div class="factions-grid">
+        <a href="polizia-di-stato.html" class="faction-card" style="--accent: #003f8a;">
+          <span class="faction-icon">👮</span>
+          <div class="faction-name">Polizia di Stato</div>
+          <div class="faction-desc">Ordine pubblico e sicurezza urbana</div>
+          <span class="faction-arrow">→</span>
+        </a>
+        <a href="carabinieri.html" class="faction-card" style="--accent: #c8a84b;">
+          <span class="faction-icon">🎖️</span>
+          <div class="faction-name">Carabinieri</div>
+          <div class="faction-desc">Arma militare e polizia giudiziaria</div>
+          <span class="faction-arrow">→</span>
+        </a>
+        <a href="guardia-di-finanza.html" class="faction-card" style="--accent: #f4c430;">
+          <span class="faction-icon">💰</span>
+          <div class="faction-name">Guardia di Finanza</div>
+          <div class="faction-desc">Controllo finanziario e anti-contrabbando</div>
+          <span class="faction-arrow">→</span>
+        </a>
+        <a href="polizia-locale.html" class="faction-card" style="--accent: #1a6b3a;">
+          <span class="faction-icon">🚔</span>
+          <div class="faction-name">Polizia Locale</div>
+          <div class="faction-desc">Vigilanza urbana e viabilità</div>
+          <span class="faction-arrow">→</span>
+        </a>
+        <a href="esercito.html" class="faction-card" style="--accent: #4a7c59;">
+          <span class="faction-icon">🪖</span>
+          <div class="faction-name">Esercito Militare</div>
+          <div class="faction-desc">Difesa nazionale e operazioni speciali</div>
+          <span class="faction-arrow">→</span>
+        </a>
+        <a href="vigili-del-fuoco.html" class="faction-card" style="--accent: #e63000;">
+          <span class="faction-icon">🚒</span>
+          <div class="faction-name">Vigili del Fuoco</div>
+          <div class="faction-desc">Soccorso tecnico e gestione emergenze</div>
+          <span class="faction-arrow">→</span>
+        </a>
+        <a href="croce-rossa.html" class="faction-card" style="--accent: #cc0000;">
+          <span class="faction-icon">🏥</span>
+          <div class="faction-name">Croce Rossa</div>
+          <div class="faction-desc">Assistenza sanitaria e umanitaria</div>
+          <span class="faction-arrow">→</span>
+        </a>
+        <a href="mafia.html" class="faction-card" style="--accent: #8b0000;">
+          <span class="faction-icon">🔫</span>
+          <div class="faction-name">Mafia</div>
+          <div class="faction-desc">Criminalità organizzata e potere ombra</div>
+          <span class="faction-arrow">→</span>
+        </a>
+        <a href="cittadini.html" class="faction-card" style="--accent: #888;">
+          <span class="faction-icon">🏙️</span>
+          <div class="faction-name">Cittadini</div>
+          <div class="faction-desc">La spina dorsale della società civile</div>
+          <span class="faction-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="rules-section">
+    <div class="rules-inner">
+      <div>
+        <div class="section-label">Il Regolamento</div>
+        <h2 class="section-title">Gioca nel<br>rispetto<br>di tutti</h2>
+        <p class="section-body">Border Italian RP è un server serio. Il roleplay di qualità nasce dalla disciplina e dal rispetto reciproco.</p>
+        <br>
+        <a href="regole.html" class="btn btn-outline" style="margin-top:1.5rem">Leggi il regolamento completo</a>
+      </div>
+      <div class="rules-list">
+        <div class="rule-item">
+          <div class="rule-num">01</div>
+          <div class="rule-text"><strong>No Metagaming</strong>Non usare informazioni esterne al gioco per avvantaggiarti nel roleplay.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-num">02</div>
+          <div class="rule-text"><strong>No RDM / VDM</strong>Nessun omicidio o investimento senza motivazione roleplay valida.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-num">03</div>
+          <div class="rule-text"><strong>Fear RP</strong>Il tuo personaggio deve temere per la propria vita in situazioni di pericolo reale.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-num">04</div>
+          <div class="rule-text"><strong>Rispetto Staff</strong>Le decisioni dello staff sono inappellabili durante il gioco. Aprire ticket se necessario.</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-num">05</div>
+          <div class="rule-text"><strong>Character Continuity</strong>Mantieni la coerenza del tuo personaggio in ogni situazione di gioco.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-tricolore">
+    <div style="background:var(--verde)"></div>
+    <div style="background:var(--bianco)"></div>
+    <div style="background:var(--rosso)"></div>
+  </div>
+  <div class="footer-logo">Border Italian RP</div>
+  <div class="footer-copy">© 2025 Border Italian RP · Tutti i diritti riservati · Solo per uso roleplay</div>
+</footer>
+
+</body>
+</html>
