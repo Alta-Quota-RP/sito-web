@@ -138,11 +138,11 @@ nav {
 }
 .btn:hover::before { opacity: 1; }
 .btn-oro {
-  background: linear-gradient(135deg, var(--oro), #b8960f);
+  background: linear-gradient(135deg, var(--oro), #650075);
   color: var(--blu-scuro);
   box-shadow: 0 4px 20px rgba(212,175,55,0.3);
 }
-.btn-oro:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(212,175,55,0.45); }
+.btn-oro:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgb(196, 55, 212); }
 .btn-verde {
   background: var(--verde);
   color: var(--bianco);
