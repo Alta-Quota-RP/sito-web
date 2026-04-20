@@ -241,7 +241,7 @@ footer {
   border-radius: 3px; font-weight: 600;
 }
 .badge-forze { background: rgba(0,80,160,0.3); color: #60a5fa; border: 1px solid rgba(96,165,250,0.3); }
-.badge-militari { background: rgba(255, 255, 255, 0.575); color: #ffffff63; border: 1px solid rgb(255, 255, 255); }
+.badge-militari { background: rgba(255, 255, 255, 0.285); color: #ffffff63; border: 1px solid rgba(255, 255, 255, 0.422); }
 .badge-emergency { background: rgba(206,43,55,0.2); color: #f87171; border: 1px solid rgba(248,113,113,0.3); }
 .badge-civil { background: rgba(0,146,70,0.2); color: #4ade80; border: 1px solid rgba(74,222,128,0.3); }
 .badge-giudiziaria { background: rgba(212,175,55,0.2); color: var(--oro); border: 1px solid var(--bordo); }
