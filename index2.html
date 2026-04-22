@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inchiostro Studio — Grafica che lascia il segno</title>
+  <meta name="description" content="Studio grafico freelance: brand identity, loghi, social media, stampa e illustrazione digitale. Stile risograph." />
+  <link rel="stylesheet" href="style2.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>◉</text></svg>" />
+</head>
+<body>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- ══════════════════════════════════════
+     NAV
+══════════════════════════════════════ -->
+<nav id="main-nav">
+  <a href="#home" class="nav-logo" data-text="INCHIOSTRO" data-page="page-home">INCHIOSTRO</a>
+
+  <ul class="nav-links">
+    <li><a href="#home"     data-page="page-home"     class="active">Home</a></li>
+    <li><a href="#services" data-page="page-services">Servizi</a></li>
+    <li><a href="#about"    data-page="page-about">Chi Sono</a></li>
+    <li><a href="#contact"  data-page="page-contact" class="nav-cta">Contattami</a></li>
+  </ul>
+
+  <button class="hamburger" aria-label="Apri menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu">
+  <button class="mobile-close">✕</button>
+  <a href="#home"     data-page="page-home">HOME</a>
+  <a href="#services" data-page="page-services">SERVIZI</a>
+  <a href="#about"    data-page="page-about">CHI SONO</a>
+  <a href="#contact"  data-page="page-contact">CONTATTI</a>
+</div>
+
+
+<!-- ██████████████████████████████████████
+     HOME
+██████████████████████████████████████ -->
+<section class="page active" id="page-home">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-deco-r"></div>
+    <div class="hero-deco-g"></div>
+    <div class="hero-deco-o"></div>
+
+    <div class="hero-eyebrow">Design Freelance · Milano · Est. 2016</div>
+
+    <h1 class="hero-big">
+      <span class="l1">GRAFICA</span>
+      <span class="l2">CHE LASCIA</span>
+      <span class="l3">IL SEGNO.</span>
+    </h1>
+
+    <div class="hero-sub">
+      <p class="hero-desc">
+        Studio creativo indipendente specializzato in identità visiva, stampa e design digitale. Ogni progetto è unico, analogico nell'anima, digitale nell'esecuzione.
+      </p>
+      <div class="hero-meta">
+        <strong data-target="320" data-suffix="+">320+</strong>
+        Progetti completati
+        <br><br>
+        <strong data-target="150" data-suffix="+">150+</strong>
+        Clienti felici
+      </div>
+    </div>
+
+    <div class="hero-actions">
+      <button class="btn btn-solid" data-page="page-services">Esplora i Servizi →</button>
+      <button class="btn btn-ghost" data-page="page-contact">Inizia un Progetto</button>
+    </div>
+
+    <div class="hero-scroll-hint">Scorri</div>
+  </div>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-track">
+      <!-- set 1 -->
+      <span class="ticker-item accent">★ BRAND IDENTITY</span>
+      <span class="ticker-item">LOGO DESIGN</span>
+      <span class="ticker-item accent2">★ SOCIAL MEDIA</span>
+      <span class="ticker-item">ILLUSTRAZIONE</span>
+      <span class="ticker-item accent">★ STAMPA</span>
+      <span class="ticker-item">UI / WEB DESIGN</span>
+      <span class="ticker-item accent2">★ PACKAGING</span>
+      <span class="ticker-item">TIPOGRAFIA</span>
+      <!-- set 2 (seamless) -->
+      <span class="ticker-item accent">★ BRAND IDENTITY</span>
+      <span class="ticker-item">LOGO DESIGN</span>
+      <span class="ticker-item accent2">★ SOCIAL MEDIA</span>
+      <span class="ticker-item">ILLUSTRAZIONE</span>
+      <span class="ticker-item accent">★ STAMPA</span>
+      <span class="ticker-item">UI / WEB DESIGN</span>
+      <span class="ticker-item accent2">★ PACKAGING</span>
+      <span class="ticker-item">TIPOGRAFIA</span>
+    </div>
+  </div>
+
+  <!-- PORTFOLIO GRID -->
+  <div class="section portfolio-section">
+    <div class="portfolio-header">
+      <div>
+        <div class="tag-label">Portfolio</div>
+        <h2 class="section-label">LAVORI RECENTI</h2>
+      </div>
+    </div>
+
+    <div class="filter-row">
+      <button class="filter-tab active" data-filter="all">Tutti</button>
+      <button class="filter-tab" data-filter="brand">Brand</button>
+      <button class="filter-tab" data-filter="logo">Logo</button>
+      <button class="filter-tab" data-filter="social">Social</button>
+      <button class="filter-tab" data-filter="print">Stampa</button>
+      <button class="filter-tab" data-filter="web">Web</button>
+    </div>
+
+    <div class="riso-grid">
+      <div class="riso-cell span-4 bg-r cc-r reveal" data-cat="brand">
+        <span>🎨</span>
+        <div class="riso-cell-overlay"></div>
+        <div class="riso-cell-info"><h3>Lumière Café</h3><p>BRAND IDENTITY</p></div>
+      </div>
+
+      <div class="riso-cell span-3 bg-g cc-g reveal" data-cat="logo">
+        <span>⬡</span>
+        <div class="riso-cell-overlay"></div>
+        <div class="riso-cell-info"><h3>TechNova</h3><p>LOGO DESIGN</p></div>
+      </div>
+
+      <div class="riso-cell span-2 bg-y cc-y reveal" data-cat="social">
+        <span>📱</span>
+        <div class="riso-cell-overlay"></div>
+        <div class="riso-cell-info"><h3>Bloom</h3><p>SOCIAL KIT</p></div>
+      </div>
+
+      <div class="riso-cell span-3 bg-o cc-o reveal" data-cat="print">
+        <span>📄</span>
+        <div class="riso-cell-overlay"></div>
+        <div class="riso-cell-info"><h3>Notte Bianca</h3><p>POSTER SERIES</p></div>
+      </div>
+
+      <div class="riso-cell span-2 bg-b cc-b reveal" data-cat="logo">
+        <span>◎</span>
+        <div class="riso-cell-overlay"></div>
+        <div class="riso-cell-info"><h3>Arkt</h3><p>LOGOMARK</p></div>
+      </div>
+
+      <div class="riso-cell span-5 bg-g cc-g reveal" data-cat="web">
+        <span>🖥️</span>
+        <div class="riso-cell-overlay"></div>
+        <div class="riso-cell-info"><h3>Aromi Bistrot</h3><p>UI DESIGN</p></div>
+      </div>
+
+      <div class="riso-cell span-3r bg-r cc-r reveal" data-cat="brand">
+        <span>✦</span>
+        <div class="riso-cell-overlay"></div>
+        <div class="riso-cell-info"><h3>Stella Moda</h3><p>BRAND + STAMPA</p></div>
+      </div>
+
+      <div class="riso-cell span-4 bg-o cc-o reveal" data-cat="print">
+        <span>🖨️</span>
+        <div class="riso-cell-overlay"></div>
+        <div class="riso-cell-info"><h3>Arte Viva</h3><p>EXHIBITION PRINT</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROCESS -->
+  <div class="section process-section">
+    <div class="tag-label">Come Lavoro</div>
+    <h2 class="big-title" style="font-size:clamp(3rem,8vw,7rem)">
+      IL MIO<br><span class="stroke">PROCESSO</span>
+    </h2>
+    <div class="process-list">
+      <div class="process-item reveal">
+        <div class="process-num">01</div>
+        <div class="process-icon">💬</div>
+        <div class="process-title">Brief</div>
+        <p class="process-desc">Ascolto il tuo progetto, raccolgo obiettivi, target e vincoli per costruire la base giusta.</p>
+      </div>
+      <div class="process-item reveal">
+        <div class="process-num">02</div>
+        <div class="process-icon">🎯</div>
+        <div class="process-title">Concept</div>
+        <p class="process-desc">Sviluppo direzioni visive e moodboard da condividere, finché la strada è quella giusta.</p>
+      </div>
+      <div class="process-item reveal">
+        <div class="process-num">03</div>
+        <div class="process-icon">✏️</div>
+        <div class="process-title">Design</div>
+        <p class="process-desc">Realizzo il progetto nei minimi dettagli. Due round di revisioni incluse in ogni servizio.</p>
+      </div>
+      <div class="process-item reveal">
+        <div class="process-num">04</div>
+        <div class="process-icon">📦</div>
+        <div class="process-title">Consegna</div>
+        <p class="process-desc">File pronti per la stampa o il web in tutti i formati. Guideline su richiesta.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS STRIP -->
+  <div class="stats-strip" style="display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)">
+    <div style="padding:3rem 2rem;text-align:center;border-right:2px solid var(--ink)">
+      <div style="font-family:var(--font-display);font-size:4rem;line-height:1;letter-spacing:.02em" data-target="320" data-suffix="+">0+</div>
+      <div style="font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:.5rem">Progetti</div>
+    </div>
+    <div style="padding:3rem 2rem;text-align:center;border-right:2px solid var(--ink)">
+      <div style="font-family:var(--font-display);font-size:4rem;line-height:1;letter-spacing:.02em;color:var(--riso-r)" data-target="150" data-suffix="+">0+</div>
+      <div style="font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:.5rem">Clienti</div>
+    </div>
+    <div style="padding:3rem 2rem;text-align:center;border-right:2px solid var(--ink)">
+      <div style="font-family:var(--font-display);font-size:4rem;line-height:1;letter-spacing:.02em;color:var(--riso-g)" data-target="8" data-suffix="">0</div>
+      <div style="font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:.5rem">Anni di Esperienza</div>
+    </div>
+    <div style="padding:3rem 2rem;text-align:center">
+      <div style="font-family:var(--font-display);font-size:4rem;line-height:1;letter-spacing:.02em;color:var(--riso-o)" data-target="98" data-suffix="%">0%</div>
+      <div style="font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:.5rem">Clienti Soddisfatti</div>
+    </div>
+  </div>
+
+  <!-- CTA STRIP -->
+  <div class="cta-strip">
+    <div>
+      <div class="tag-label" style="background:var(--ink)">Pronti?</div>
+      <h2 class="big-title" style="font-size:clamp(3rem,7vw,6.5rem)">
+        HAI UN<br><span style="color:var(--riso-r)">PROGETTO?</span>
+      </h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:1rem;align-items:flex-start">
+      <p style="font-size:.9rem;color:var(--muted);max-width:320px;line-height:1.8">Parliamo del tuo prossimo progetto. Preventivo gratuito e senza impegno entro 24 ore.</p>
+      <button class="btn btn-solid" data-page="page-contact">Contattami Ora →</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-logo-txt">INCHIOSTRO<span>.</span></div>
+    <ul class="footer-links">
+      <li><a href="#home"     data-page="page-home">Home</a></li>
+      <li><a href="#services" data-page="page-services">Servizi</a></li>
+      <li><a href="#about"    data-page="page-about">Chi Sono</a></li>
+      <li><a href="#contact"  data-page="page-contact">Contatti</a></li>
+    </ul>
+    <p class="footer-copy">© 2025 Inchiostro Studio — Tutti i diritti riservati.</p>
+  </footer>
+
+</section>
+
+
+<!-- ██████████████████████████████████████
+     SERVIZI
+██████████████████████████████████████ -->
+<section class="page" id="page-services">
+
+  <div class="services-top">
+    <div class="tag-label">Cosa Offro</div>
+    <h1 class="big-title" style="font-size:clamp(4rem,11vw,10rem);color:var(--paper)">
+      SERVI<span style="color:var(--riso-y)">ZI</span>
+    </h1>
+    <p style="font-size:.95rem;color:rgba(255,255,255,0.6);max-width:500px;line-height:1.8;margin-top:1.5rem">
+      Dall'identità visiva al singolo elemento grafico, offro soluzioni creative su misura. Prezzi chiari, tempistiche rispettate, qualità garantita.
+    </p>
+  </div>
+
+  <div class="section" style="padding-top:4rem">
+
+    <table class="srv-table reveal">
+      <thead>
+        <tr>
+          <th style="width:60px"></th>
+          <th>Servizio</th>
+          <th>Include</th>
+          <th>Prezzo</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="srv-icon-cell">🎨</td>
+          <td>
+            <div class="srv-name">Brand Identity</div>
+            <div class="srv-tags">
+              <span class="srv-tag">Logo</span>
+              <span class="srv-tag">Guidelines</span>
+              <span class="srv-tag">Palette</span>
+              <span class="srv-tag">Tipografia</span>
+            </div>
+          </td>
+          <td style="color:var(--muted);font-size:.82rem;max-width:240px">Logo completo + brand book, palette colori, tipografia, cancelleria, mockup professionali.</td>
+          <td>
+            <div class="srv-price">€ 450</div>
+            <div class="srv-price-label">prezzo base</div>
+          </td>
+          <td class="srv-action"><button data-page="page-contact">Richiedi →</button></td>
+        </tr>
+        <tr>
+          <td class="srv-icon-cell">⬡</td>
+          <td>
+            <div class="srv-name">Logo Design</div>
+            <div class="srv-tags">
+              <span class="srv-tag">3 Proposte</span>
+              <span class="srv-tag">Vettoriale</span>
+              <span class="srv-tag">2 Revisioni</span>
+            </div>
+          </td>
+          <td style="color:var(--muted);font-size:.82rem;max-width:240px">Tre concept iniziali, revisioni incluse, file vettoriali AI/SVG/EPS, versioni colore e B/N, licenza commerciale.</td>
+          <td>
+            <div class="srv-price">€ 180</div>
+            <div class="srv-price-label">prezzo base</div>
+          </td>
+          <td class="srv-action"><button data-page="page-contact">Richiedi →</button></td>
+        </tr>
+        <tr>
+          <td class="srv-icon-cell">📱</td>
+          <td>
+            <div class="srv-name">Social Media</div>
+            <div class="srv-tags">
+              <span class="srv-tag">Template</span>
+              <span class="srv-tag">Stories</span>
+              <span class="srv-tag">Canva/Figma</span>
+            </div>
+          </td>
+          <td style="color:var(--muted);font-size:.82rem;max-width:240px">Pack da 10 grafiche per feed e stories, copertine, highlights, template editabili per Canva o Figma.</td>
+          <td>
+            <div class="srv-price">€ 120</div>
+            <div class="srv-price-label">per pack</div>
+          </td>
+          <td class="srv-action"><button data-page="page-contact">Richiedi →</button></td>
+        </tr>
+        <tr>
+          <td class="srv-icon-cell">📄</td>
+          <td>
+            <div class="srv-name">Stampa</div>
+            <div class="srv-tags">
+              <span class="srv-tag">Biglietti</span>
+              <span class="srv-tag">Flyer</span>
+              <span class="srv-tag">Poster</span>
+              <span class="srv-tag">Brochure</span>
+            </div>
+          </td>
+          <td style="color:var(--muted);font-size:.82rem;max-width:240px">Biglietti da visita, flyer, brochure, manifesti, packaging. File pronti per tipografia con profili colore corretti.</td>
+          <td>
+            <div class="srv-price">€ 80</div>
+            <div class="srv-price-label">prezzo base</div>
+          </td>
+          <td class="srv-action"><button data-page="page-contact">Richiedi →</button></td>
+        </tr>
+        <tr>
+          <td class="srv-icon-cell">🖥️</td>
+          <td>
+            <div class="srv-name">UI / Web Design</div>
+            <div class="srv-tags">
+              <span class="srv-tag">Figma</span>
+              <span class="srv-tag">Prototipo</span>
+              <span class="srv-tag">Design System</span>
+            </div>
+          </td>
+          <td style="color:var(--muted);font-size:.82rem;max-width:240px">Wireframe, UI design in Figma, prototipo interattivo, design system e handoff per sviluppatori.</td>
+          <td>
+            <div class="srv-price">€ 350</div>
+            <div class="srv-price-label">prezzo base</div>
+          </td>
+          <td class="srv-action"><button data-page="page-contact">Richiedi →</button></td>
+        </tr>
+        <tr>
+          <td class="srv-icon-cell">✦</td>
+          <td>
+            <div class="srv-name">Illustrazione</div>
+            <div class="srv-tags">
+              <span class="srv-tag">Vettoriale</span>
+              <span class="srv-tag">Character</span>
+              <span class="srv-tag">Pattern</span>
+            </div>
+          </td>
+          <td style="color:var(--muted);font-size:.82rem;max-width:240px">Illustrazioni vettoriali su misura, character design, pattern, icone personalizzate adattate al tuo brand.</td>
+          <td>
+            <div class="srv-price">€ 150</div>
+            <div class="srv-price-label">prezzo base</div>
+          </td>
+          <td class="srv-action"><button data-page="page-contact">Richiedi →</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="text-align:center;padding:2rem 0">
+      <p style="font-size:.85rem;color:var(--muted);margin-bottom:2rem;letter-spacing:.04em">I prezzi indicati sono orientativi. Ogni progetto viene quotato su misura dopo una prima call gratuita.</p>
+      <button class="btn btn-riso" data-page="page-contact">Richiedi un Preventivo Gratuito →</button>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-logo-txt">INCHIOSTRO<span>.</span></div>
+    <ul class="footer-links">
+      <li><a href="#home"     data-page="page-home">Home</a></li>
+      <li><a href="#services" data-page="page-services">Servizi</a></li>
+      <li><a href="#about"    data-page="page-about">Chi Sono</a></li>
+      <li><a href="#contact"  data-page="page-contact">Contatti</a></li>
+    </ul>
+    <p class="footer-copy">© 2025 Inchiostro Studio.</p>
+  </footer>
+
+</section>
+
+
+<!-- ██████████████████████████████████████
+     CHI SONO
+██████████████████████████████████████ -->
+<section class="page" id="page-about">
+
+  <div class="about-layout">
+    <!-- Left -->
+    <div class="about-left reveal">
+      <div class="tag-label">Chi Sono</div>
+      <h1 class="big-title" style="font-size:clamp(4rem,9vw,8rem)">
+        ALEX<br><span style="color:var(--riso-r)">ROMANO</span>
+      </h1>
+
+      <div class="about-portrait">
+        <div class="portrait-frame">
+          🎨
+          <div class="portrait-shadow"></div>
+        </div>
+        <div class="portrait-sticker">
+          <strong>8+</strong>
+          anni di<br>esperienza
+        </div>
+      </div>
+    </div>
+
+    <!-- Right -->
+    <div class="about-right reveal">
+      <p class="about-bio">
+        Sono un graphic designer freelance con base a Milano. Lavoro con startup, PMI e professionisti per costruire identità visive che restano impresse nella memoria.
+      </p>
+
+      <blockquote class="about-quote">
+        "Il design è intelligenza resa visibile. Ogni scelta grafica racconta qualcosa."
+      </blockquote>
+
+      <p class="about-bio">
+        La mia formazione parte dalla grafica tradizionale — serigrafia, risograph, stampa tipografica — e si fonde con gli strumenti digitali più avanzati. Questo mi dà un punto di vista unico: amo la materia, il grano della carta, l'imperfezione del colore sovrapposto.
+      </p>
+
+      <div class="skills-list">
+        <div class="skill-row">
+          <div class="skill-label">Brand Identity</div>
+          <div class="skill-track"><div class="skill-bar" style="width:95%"></div></div>
+          <div class="skill-pct">95%</div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-label">Logo Design</div>
+          <div class="skill-track"><div class="skill-bar green" style="width:92%"></div></div>
+          <div class="skill-pct">92%</div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-label">UI / Web Design</div>
+          <div class="skill-track"><div class="skill-bar orange" style="width:85%"></div></div>
+          <div class="skill-pct">85%</div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-label">Illustrazione</div>
+          <div class="skill-track"><div class="skill-bar blue" style="width:80%"></div></div>
+          <div class="skill-pct">80%</div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-label">Social Media</div>
+          <div class="skill-track"><div class="skill-bar green" style="width:90%"></div></div>
+          <div class="skill-pct">90%</div>
+        </div>
+      </div>
+
+      <button class="btn btn-solid" data-page="page-contact">Lavoriamo Insieme →</button>
+    </div>
+  </div>
+
+  <!-- Tools -->
+  <div class="tools-section">
+    <div class="tag-label">Strumenti</div>
+    <h2 class="section-label" style="margin-bottom:0">SOFTWARE &amp; TOOLS</h2>
+    <div class="tools-flex">
+      <div class="tool-badge">🖊️ Adobe Illustrator</div>
+      <div class="tool-badge">📷 Photoshop</div>
+      <div class="tool-badge">📰 InDesign</div>
+      <div class="tool-badge">🎬 After Effects</div>
+      <div class="tool-badge">🔷 Figma</div>
+      <div class="tool-badge">🖌️ Procreate</div>
+      <div class="tool-badge">⬛ Canva Pro</div>
+      <div class="tool-badge">🌊 Affinity Suite</div>
+      <div class="tool-badge">🎨 Blender 3D</div>
+      <div class="tool-badge">📐 Sketch</div>
+    </div>
+  </div>
+
+  <!-- Testimonials -->
+  <div class="testi-section">
+    <div class="tag-label">Clienti</div>
+    <h2 class="section-label">COSA DICONO</h2>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <p class="testi-text">Alex ha trasformato completamente l'immagine del nostro brand. Professionale, creativo e sempre puntuale nelle consegne. Lo consiglio vivamente a tutti.</p>
+        <div class="testi-author">Martina F.</div>
+        <div class="testi-role">CEO, Bloom Studio</div>
+      </div>
+      <div class="testi-card reveal">
+        <p class="testi-text">Il logo che ha realizzato per noi è esattamente quello che cercavamo: semplice, moderno e con carattere. Ha capito al volo la nostra visione.</p>
+        <div class="testi-author">Lorenzo M.</div>
+        <div class="testi-role">Founder, TechNova</div>
+      </div>
+      <div class="testi-card reveal">
+        <p class="testi-text">Collaboro con Alex da due anni per i materiali social. Ogni progetto è una sorpresa positiva. Creativo, veloce, affidabile e con un gusto impeccabile.</p>
+        <div class="testi-author">Sara G.</div>
+        <div class="testi-role">Owner, Aromi Bistrot</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-logo-txt">INCHIOSTRO<span>.</span></div>
+    <ul class="footer-links">
+      <li><a href="#home"     data-page="page-home">Home</a></li>
+      <li><a href="#services" data-page="page-services">Servizi</a></li>
+      <li><a href="#about"    data-page="page-about">Chi Sono</a></li>
+      <li><a href="#contact"  data-page="page-contact">Contatti</a></li>
+    </ul>
+    <p class="footer-copy">© 2025 Inchiostro Studio.</p>
+  </footer>
+
+</section>
+
+
+<!-- ██████████████████████████████████████
+     CONTATTAMI
+██████████████████████████████████████ -->
+<section class="page" id="page-contact">
+
+  <div class="contact-layout">
+
+    <!-- Left -->
+    <div class="contact-left">
+      <div class="tag-label">Contatti</div>
+      <h1 class="big-title" style="font-size:clamp(3.5rem,8vw,7rem)">
+        PARLIA<span style="color:var(--riso-r)">MO.</span>
+      </h1>
+      <p style="font-size:.88rem;color:var(--muted);line-height:1.85;margin:1.5rem 0 2.5rem">
+        Hai un progetto in mente? Scrivimi. Rispondo entro 24 ore lavorative con un preventivo personalizzato.
+      </p>
+
+      <div class="contact-info-block reveal">
+        <div class="contact-info-icon">📧</div>
+        <div>
+          <div class="contact-info-lbl">Email</div>
+          <div class="contact-info-val">ciao@inchiostrostudio.it</div>
+        </div>
+      </div>
+      <div class="contact-info-block reveal">
+        <div class="contact-info-icon">📞</div>
+        <div>
+          <div class="contact-info-lbl">Telefono / WhatsApp</div>
+          <div class="contact-info-val">+39 333 456 7890</div>
+        </div>
+      </div>
+      <div class="contact-info-block reveal">
+        <div class="contact-info-icon">📍</div>
+        <div>
+          <div class="contact-info-lbl">Sede</div>
+          <div class="contact-info-val">Milano — Lavoro da remoto</div>
+        </div>
+      </div>
+      <div class="contact-info-block reveal">
+        <div class="contact-info-icon">🕐</div>
+        <div>
+          <div class="contact-info-lbl">Orari</div>
+          <div class="contact-info-val">Lun – Ven · 9:00–18:00</div>
+        </div>
+      </div>
+
+      <div class="social-strip">
+        <a class="social-item" href="#" title="Instagram">📸</a>
+        <a class="social-item" href="#" title="Behance">🅱</a>
+        <a class="social-item" href="#" title="Dribbble">🏀</a>
+        <a class="social-item" href="#" title="LinkedIn">💼</a>
+      </div>
+    </div>
+
+    <!-- Right: form -->
+    <div class="contact-form-box reveal">
+      <div class="form-head">INVIA UN MESSAGGIO</div>
+      <p class="form-sub">Compila il modulo — rispondo presto.</p>
+
+      <form id="contact-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-lbl" for="f-name">Nome *</label>
+            <input class="form-input" id="f-name" type="text" placeholder="Mario Rossi" required />
+          </div>
+          <div class="form-group">
+            <label class="form-lbl" for="f-email">Email *</label>
+            <input class="form-input" id="f-email" type="email" placeholder="mario@email.it" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-lbl" for="f-company">Azienda / Brand</label>
+          <input class="form-input" id="f-company" type="text" placeholder="(opzionale)" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-lbl" for="f-service">Servizio *</label>
+          <select class="form-select" id="f-service" required>
+            <option value="" disabled selected>Seleziona…</option>
+            <option value="brand">Brand Identity</option>
+            <option value="logo">Logo Design</option>
+            <option value="social">Social Media Design</option>
+            <option value="print">Materiali a Stampa</option>
+            <option value="web">UI / Web Design</option>
+            <option value="illustration">Illustrazione</option>
+            <option value="other">Altro</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-lbl">Budget Indicativo</label>
+          <div class="budget-row">
+            <button type="button" class="budget-chip">€ 100–300</button>
+            <button type="button" class="budget-chip">€ 300–600</button>
+            <button type="button" class="budget-chip">€ 600–1.200</button>
+            <button type="button" class="budget-chip">€ 1.200+</button>
+            <button type="button" class="budget-chip">Da definire</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-lbl" for="f-msg">Descrivi il Progetto *</label>
+          <textarea class="form-textarea" id="f-msg" placeholder="Raccontami tutto: settore, stile, scadenza, ispirazione…" required></textarea>
+        </div>
+
+        <div id="success-box" class="success-box">
+          <div class="success-emo">✓</div>
+          <strong>Messaggio ricevuto!</strong><br>
+          Ti rispondo entro 24 ore lavorative.
+        </div>
+
+        <div class="form-footer">
+          <button type="submit" class="btn btn-solid">Invia Messaggio →</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-logo-txt">INCHIOSTRO<span>.</span></div>
+    <ul class="footer-links">
+      <li><a href="#home"     data-page="page-home">Home</a></li>
+      <li><a href="#services" data-page="page-services">Servizi</a></li>
+      <li><a href="#about"    data-page="page-about">Chi Sono</a></li>
+      <li><a href="#contact"  data-page="page-contact">Contatti</a></li>
+    </ul>
+    <p class="footer-copy">© 2025 Inchiostro Studio.</p>
+  </footer>
+
+</section>
+
+<script src="main2.js"></script>
+</body>
+</html>
