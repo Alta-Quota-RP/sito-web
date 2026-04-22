@@ -157,7 +157,7 @@ if (canvas) {
 
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = '#880097';
+      ctx.fillStyle = '#e600ff';
       ctx.fill();
     });
 
